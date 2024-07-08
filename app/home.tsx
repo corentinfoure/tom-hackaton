@@ -1,7 +1,9 @@
 import { RootRouteParams } from "@/App";
 import type { ItemData } from "@/components/shared/ImageContainer";
 import { ImageContainer3layout } from "@/components/shared/ImageContainer";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { ThemedText } from "@/components/style/ThemedText";
+import { useEffect } from "react";
+import { Pressable, SafeAreaView, StyleSheet, View } from "react-native";
 
 type HomeProps = RootRouteParams<"home">;
 
@@ -23,6 +25,19 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
       onPress: () => navigation.navigate("speechPreps"),
     },
   ];
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Pressable
+          onPress={() => navigation.navigate("landingPage")}
+          style={{ marginRight: 16 }}
+        >
+          <ThemedText>{"T"}</ThemedText>
+        </Pressable>
+      ),
+    });
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.titleContainer}>

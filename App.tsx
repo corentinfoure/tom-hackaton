@@ -46,7 +46,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="landingPage"
+        initialRouteName="home"
         screenOptions={{
           headerBackTitleVisible: false,
           headerTintColor: "black",
