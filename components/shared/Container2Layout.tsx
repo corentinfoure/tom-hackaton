@@ -21,7 +21,6 @@ export const Container2Layout: React.FC<{items: ItemData[]}> = ({items}) => {
 
 const styles = StyleSheet.create({
     container: {
-        // Add styles if needed
     },
     buttonsContainer: {
         flexDirection: 'row',
