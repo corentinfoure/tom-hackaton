@@ -1,41 +1,40 @@
-import { StyleSheet, View } from "react-native"
-import { HelloWave } from "@/components/HelloWave"
-import { ThemedText } from "@/components/style/ThemedText"
-import { ImageContainer3layout } from "@/components/shared/ImageContainer"
-import type { ItemData } from "@/components/shared/ImageContainer"
+import { RootRouteParams } from "@/App";
+import type { ItemData } from "@/components/shared/ImageContainer";
+import { ImageContainer3layout } from "@/components/shared/ImageContainer";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
-export const Home = () => {
+type HomeProps = RootRouteParams<"home">;
 
+export const Home: React.FC<HomeProps> = ({ navigation }) => {
   const items: ItemData[] = [
     {
-      title: "ITEM 1",
-      image: require('@/assets/images/react-logo.png')
+      title: "Préparer une prise de parole",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("speechCreate"),
     },
     {
-      title: "ITEM 2",
-      image: require('@/assets/images/react-logo.png')
+      title: "Mes conseils",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("advices"),
     },
     {
-      title: "ITEM 3 ",
-      image: require('@/assets/images/react-logo.png')
+      title: "Mes prises de parole",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("speechPreps"),
     },
-  ]
+  ];
 
   return (
-    <View>
-      <View style={styles.titleContainer}>
-        <ThemedText type="title">Welcome Home!</ThemedText>
-        <HelloWave />
-        <ImageContainer3layout items={items}/>
-      </View>
-    </View>
-  )
-}
+    <SafeAreaView style={styles.titleContainer}>
+      <ImageContainer3layout items={items} />
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "column",
     alignItems: "center",
-    gap: 8,
+    marginTop: 20,
   },
-})
+});
