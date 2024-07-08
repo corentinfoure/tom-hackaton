@@ -13,7 +13,7 @@ export type ItemData = {
   image: ImageSourcePropType;
 } & Omit<PressableProps, "style">;
 
-export const Container3Layout: React.FC<{ items: ItemData[] }> = ({
+export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
   items,
 }) => {
   return (
@@ -53,11 +53,12 @@ const styles = StyleSheet.create({
     width: "90%",
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
   },
   imageContainer: {},
   image: {
-    width: 100,
-    height: 100,
+    // width: 100,
+    // height: 100,
   },
   title: {
     marginVertical: 5,
