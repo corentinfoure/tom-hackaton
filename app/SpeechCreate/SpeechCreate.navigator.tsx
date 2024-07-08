@@ -4,23 +4,33 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from "@react-navigation/stack";
-import { SpeechCreateContent } from "./SpeechCreateContent"
-import { SpeechCreateName } from "./SpeechCreateName"
-import { SpeechCreateProfession } from "./SpeechCreateProfession"
-import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject"
+import { SpeechCreateContent } from "./SpeechCreateContent";
+import { SpeechCreateName } from "./SpeechCreateName";
+import { SpeechCreateProfession } from "./SpeechCreateProfession";
+import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject";
+import { SpeechCreatePublic } from "./SpeechCreatePublic";
+import { SpeechCreateTitle } from "./SpeechCreateTitle";
 
 const Routes = {
   SpeechCreateContent: "SpeechCreateContent",
+  SpeechCreateTitle: "SpeechCreateTitle",
   SpeechCreateName: "SpeechCreateName",
   SpeechCreateProfession: "SpeechCreateProfession",
   SpeechCreateChooseSubject: "SpeechCreateChooseSubject",
+  SpeechCreatePublic: "SpeechCreatePublic",
 } as const;
 
+type UUIDUpdatable = {
+  uuid: string;
+};
+
 type SpeechCreateNavigatorParamsList = {
-  [Routes.SpeechCreateContent]: { step: number };
-  [Routes.SpeechCreateName]: { step: number };
-  [Routes.SpeechCreateProfession]: { step: number };
-  [Routes.SpeechCreateChooseSubject]: { step: number };
+  [Routes.SpeechCreateTitle]: { step: number };
+  [Routes.SpeechCreateContent]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreateName]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreateProfession]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreateChooseSubject]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreatePublic]: { step: number } & UUIDUpdatable;
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -45,7 +55,7 @@ const Stack = createStackNavigator<SpeechCreateNavigatorParamsList>();
 export const SpeechCreateNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="SpeechCreateContent"
+      initialRouteName="SpeechCreateTitle"
       screenOptions={{
         headerBackTitleVisible: false,
         headerTintColor: "black",
@@ -56,6 +66,16 @@ export const SpeechCreateNavigator = () => {
         component={SpeechCreateContent}
         options={{
           title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateTitle"
+        component={SpeechCreateTitle}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+        initialParams={{
+          step: 0,
         }}
       />
       <Stack.Screen
@@ -79,6 +99,13 @@ export const SpeechCreateNavigator = () => {
           title: "Créer une prise de parole",
         }}
       />
+      <Stack.Screen
+        name="SpeechCreatePublic"
+        component={SpeechCreatePublic}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
     </Stack.Navigator>
-  )
-}
+  );
+};

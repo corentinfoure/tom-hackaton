@@ -12,40 +12,14 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
   route,
 }) => {
   const { create, update } = useSpeech();
-  const [answer, setAnswer] = useState<string | undefined>(undefined);
+  const [content, setContent] = useState<string | undefined>(undefined);
   const [uuid, setUUID] = useState<string | undefined>(undefined);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <ProgressBar currentStep={1} totalSteps={6} />
-      <QuestionTemplate
-        answer1={undefined}
-        title="De quoi je veux parler ?"
-        input1="J'indique le titre de ma prise parole"
-        onNext={() => {
-          navigation.push("SpeechCreateName", { step: 0 });
-        id="name"
-        answer={answer}
+      <ProgressBar currentStep={4} totalSteps={6} />
 
-        // example={"example 1"}
-        // suggestions={[]}
-        // onNext={async () => {
-        //   const updateWithUUID = async (uuid: string) => {
-        //     await update(uuid, {
-        //       answer: answer || "",
-        //       stepID: "name",
-        //     });
-        //   };
-        //   if (!uuid) {
-        //     const newUUID = await create();
-        //     setUUID(newUUID);
-        //     await updateWithUUID(newUUID);
-        //   } else {
-        //     await updateWithUUID(uuid);
-        //   }
-        // }}
-        // onChangeAnswer={setAnswer}
-      />
+      {/* Create multi input UI here */}
     </View>
   );
 };
