@@ -1,4 +1,10 @@
-import { TextInput, StyleSheet, View } from "react-native";
+import {
+  TextInput,
+  StyleSheet,
+  View,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { ThemedText } from "../style/ThemedText";
 
 type InputTextType = {
@@ -6,6 +12,8 @@ type InputTextType = {
   title?: string;
   largeInput?: boolean;
   onChangeText: (value: string) => void;
+  placeholder?: string;
+  style?: StyleProp<ViewStyle>;
 };
 
 export const InputText = ({
@@ -13,14 +21,16 @@ export const InputText = ({
   title,
   largeInput,
   onChangeText,
+  placeholder,
+  style,
 }: InputTextType) => {
   return (
-    <View>
+    <View style={[style]}>
       <ThemedText type="default">{title}</ThemedText>
       <TextInput
         value={value}
         onChangeText={onChangeText}
-        placeholder="Ecris ton texte ici..."
+        placeholder={placeholder ?? "Ecris ton texte ici..."}
         placeholderTextColor={"grey"}
         multiline={largeInput}
         style={[styles.normalInput, largeInput && styles.largeInput]}

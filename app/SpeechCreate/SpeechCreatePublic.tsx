@@ -9,48 +9,50 @@ import {
 import { useState } from "react";
 import { useSpeech } from "./hooks/useSpeech";
 
-type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateChooseSubject">;
+type SpeechCreatePublic = SpeechCreateRouteParams<"SpeechCreatePublic">;
 
 const sugestions: Omit<ItemData, "onPress">[] = [
   {
-    label: "Travail",
-    value: "Travail",
+    label: "Des élèves",
+    value: "Des élèves",
   },
   {
-    label: "Vie Quotidienne",
-    value: "Vie Quotidienne",
+    label: "D'autres personnes avec une trisomie",
+    value: "D'autres personnes avec une trisomie",
   },
-  { label: "Santé", value: "Santé" },
-  { label: "Mes droits", value: "Mes droits" },
+  { label: "Des professionnels", value: "Des professionnels" },
+  { label: "Des élus", value: "Des élus" },
 ];
 
-export const SpeechCreateChooseSubject: React.FC<SpeechCreateProps> = ({
+export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
   navigation,
   route,
 }) => {
-  const [subject, setSubject] = useState<string | undefined>(undefined);
+  const [publicAudience, setPublicAudience] = useState<string | undefined>(
+    undefined
+  );
   const { update } = useSpeech();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <ProgressBar currentStep={4} totalSteps={6} />
       <QuestionTemplate
-        title="Je sélectionne mon sujet"
+        title="Qui est mon public"
+        subtitle="Quand je sais à qui je m'adresse, je peux préparer mon discours en pensant à mon public."
         input1={{
-          title: "Précise ton sujet ici si il ne fait pas partis de la liste",
-          onChangeText: setSubject,
-          value: subject,
+          title: "Précise ton public ici s'il ne fait pas partis de la liste",
+          onChangeText: setPublicAudience,
+          value: publicAudience,
         }}
         suggestions={sugestions.map((item) => ({
           ...item,
-          onPress: () => setSubject(item.value),
+          onPress: () => setPublicAudience(item.value),
         }))}
         onNext={async () => {
           await update(route.params.uuid, {
-            answer: subject || "",
-            stepID: "subject",
+            answer: publicAudience || "",
+            stepID: "publicAudience",
           });
-
-          navigation.push("SpeechCreatePublic", {
+          navigation.navigate("SpeechCreateContent", {
             step: route.params.step + 1,
             uuid: route.params.uuid,
           });

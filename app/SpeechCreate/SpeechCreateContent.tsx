@@ -1,7 +1,9 @@
-import { ProgressBar } from "@/components/shared/ProgressBar";
+import { useState } from "react";
+import { View } from "react-native";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { View } from "react-native";
+import { useSpeech } from "./hooks/useSpeech";
+import { ProgressBar } from "@/components/shared/ProgressBar";
 
 type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateContent">;
 
@@ -9,18 +11,14 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
   navigation,
   route,
 }) => {
+  const { create, update } = useSpeech();
+  const [content, setContent] = useState<string[]>([]);
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <ProgressBar currentStep={1} totalSteps={6} />
-      <QuestionTemplate
-        id="1"
-        answer1={undefined}
-        title="De quoi je veux parler ?"
-        input1="J’indique le titre de ma prise parole"
-        onNext={() => {
-          navigation.push("SpeechCreateName", { step: 0 });
-        }}
-      />
+      <ProgressBar currentStep={4} totalSteps={6} />
+
+      {/* Create multi input UI here */}
     </View>
   );
 };

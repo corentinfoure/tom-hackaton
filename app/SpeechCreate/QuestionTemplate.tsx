@@ -5,42 +5,88 @@ import { useState } from "react";
 import { View } from "react-native";
 import { QuestionExample } from "./QuestionExample";
 import { useNavigation } from "@react-navigation/native";
+import { SpeechKey } from "./hooks/useSpeech";
+import {
+  ContainerHalfWidth,
+  ItemData,
+} from "@/components/shared/ContainerHalfWidth";
+
+type InputProps = {
+  title: string;
+  value: string | undefined;
+  onChangeText: (value: string) => void;
+  placeholder?: string;
+};
 
 type QuestionTemplateProps = {
-  id: string;
   title: string;
+  subtitle?: string;
   example?: string;
-  input1?: string;
-  input2?: string;
-  answer1?: string;
-  answer2?: string;
-  suggestions?: string[];
+  input1: InputProps;
+  input2?: InputProps;
+  suggestions?: ItemData[];
   onNext: () => void;
+  onBack: () => void;
 };
 
 export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
-  id,
   title,
+  subtitle,
   input1,
   input2,
   suggestions,
   example,
-  answer1,
-  answer2,
   onNext,
+  onBack,
 }) => {
-  const [value1, setValue1] = useState<string | undefined>(answer1)
-  const [value2, setValue2] = useState<string | undefined>(answer2)
-
-  const navigation = useNavigation();
   return (
     <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
       <ThemedText type="title">{title}</ThemedText>
+      {subtitle && (
+        <ThemedText type="subtitle" style={{ marginTop: 10 }}>
+          {subtitle}
+        </ThemedText>
+      )}
       {example && <QuestionExample text={example} style={{ marginTop: 10 }} />}
-      {input1 &&<InputText title={input1} value={answer1} onChangeText={setValue1} largeInput />}
-      {input2 &&<InputText title={input2} value={answer2} onChangeText={setValue2} largeInput />}
-      <CustomButton title="Valider" handleOnPress={onNext} variant="primary" style={{marginVertical: 10,}}/>
-      <CustomButton title="Je retourne à l'étape précédente" handleOnPress={navigation.goBack} variant="secondary" />
+      {suggestions && suggestions.length > 0 && (
+        <ContainerHalfWidth
+          items={suggestions}
+          spacing={8}
+          style={{ marginTop: 10 }}
+        />
+      )}
+
+      <InputText
+        title={input1.title}
+        value={input1.value}
+        onChangeText={input1.onChangeText}
+        placeholder={input1.placeholder}
+        largeInput
+        style={{ marginTop: 10 }}
+      />
+
+      {input2 && (
+        <InputText
+          style={{ marginTop: 10 }}
+          title={input2.title}
+          value={input2.value}
+          onChangeText={input2.onChangeText}
+          placeholder={input2.placeholder}
+          largeInput
+        />
+      )}
+      {/* <InputText value={answer} onChangeText={onChangeAnswer} largeInput /> */}
+      <CustomButton
+        title="Valider"
+        handleOnPress={onNext}
+        variant="primary"
+        style={{ marginTop: 24, marginBottom: 12 }}
+      />
+      <CustomButton
+        title="Retour a l'étape précédente"
+        handleOnPress={onBack}
+        variant="secondary"
+      />
     </View>
   );
 };

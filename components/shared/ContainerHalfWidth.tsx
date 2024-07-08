@@ -1,17 +1,47 @@
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { CustomButton } from "./CustomButton";
+import { ThemedText } from "../style/ThemedText";
+import { theme } from "../style/colors";
 
 export type ItemData = {
   label: string;
-  onPress: () => void;
+  value: string;
+  onPress: (value: string) => void;
+};
+
+const DottedSuggestion: React.FC<ItemData> = ({ label, onPress, value }) => {
+  return (
+    <Pressable
+      style={{
+        borderStyle: "dashed",
+        borderWidth: 1,
+        borderColor: theme.button.primary.background,
+        borderRadius: 4,
+        padding: 12,
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1,
+      }}
+      onPress={() => onPress(value)}
+    >
+      <ThemedText type="subtitle">{label}</ThemedText>
+    </Pressable>
+  );
 };
 
 export const ContainerHalfWidth: React.FC<{
   items: ItemData[];
   spacing: number;
-}> = ({ items, spacing }) => {
+  style?: StyleProp<ViewStyle>;
+}> = ({ items, spacing, style }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {items.map((item, index, items) => {
         if (index % 2 === 0) {
           return (
@@ -21,22 +51,11 @@ export const ContainerHalfWidth: React.FC<{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 marginTop: index > 0 ? spacing : 0,
+                gap: spacing,
               }}
             >
-              <CustomButton
-                title={item.label}
-                handleOnPress={item.onPress}
-                variant="primary"
-                style={{ width: "45%" }}
-              />
-              {items[index + 1] && (
-                <CustomButton
-                  title={items[index + 1].label}
-                  handleOnPress={items[index + 1].onPress}
-                  variant="primary"
-                  style={{ width: "45%" }}
-                />
-              )}
+              <DottedSuggestion {...item} />
+              {items[index + 1] && <DottedSuggestion {...items[index + 1]} />}
             </View>
           );
         }
