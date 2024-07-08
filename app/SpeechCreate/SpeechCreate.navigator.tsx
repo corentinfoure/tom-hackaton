@@ -4,14 +4,23 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from "@react-navigation/stack";
-import { SpeechCreate } from "./SpeechCreate";
+import { SpeechCreateContent } from "./SpeechCreateContent"
+import { SpeechCreateName } from "./SpeechCreateName"
+import { SpeechCreateProfession } from "./SpeechCreateProfession"
+import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject"
 
 const Routes = {
-  Root: "root",
+  SpeechCreateContent: "SpeechCreateContent",
+  SpeechCreateName: "SpeechCreateName",
+  SpeechCreateProfession: "SpeechCreateProfession",
+  SpeechCreateChooseSubject: "SpeechCreateChooseSubject",
 } as const;
 
 type SpeechCreateNavigatorParamsList = {
-  [Routes.Root]: { step: number };
+  [Routes.SpeechCreateContent]: { step: number };
+  [Routes.SpeechCreateName]: { step: number };
+  [Routes.SpeechCreateProfession]: { step: number };
+  [Routes.SpeechCreateChooseSubject]: { step: number };
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -36,22 +45,40 @@ const Stack = createStackNavigator<SpeechCreateNavigatorParamsList>();
 export const SpeechCreateNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="root"
+      initialRouteName="SpeechCreateContent"
       screenOptions={{
         headerBackTitleVisible: false,
         headerTintColor: "black",
       }}
     >
       <Stack.Screen
-        name="root"
-        component={SpeechCreate}
+        name="SpeechCreateContent"
+        component={SpeechCreateContent}
         options={{
           title: "Créer une prise de parole",
         }}
-        initialParams={{
-          step: 0,
+      />
+      <Stack.Screen
+        name="SpeechCreateName"
+        component={SpeechCreateName}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateProfession"
+        component={SpeechCreateProfession}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateChooseSubject"
+        component={SpeechCreateChooseSubject}
+        options={{
+          title: "Créer une prise de parole",
         }}
       />
     </Stack.Navigator>
-  );
-};
+  )
+}
