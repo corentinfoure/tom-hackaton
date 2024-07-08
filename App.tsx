@@ -1,53 +1,43 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from "@react-navigation/native"
-import React from "react"
-import { Explore } from "./app/explore"
-import { Home } from "./app/home"
-import { LandingPage } from './app/landingPage'
-import { TabBarIcon } from "./components/navigation/TabBarIcon"
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import {
+  StackNavigationProp,
+  createStackNavigator,
+} from "@react-navigation/stack";
+import React from "react";
+import { LandingPage } from "./app/landingPage";
+import { RouteParams } from "./navigation/RouteParams";
 
-const Tab = createBottomTabNavigator()
-const Stack = createStackNavigator()
+const Routes = {
+  Landing: "landingPage",
+} as const;
 
-const TabNavigator = () => {
-  return (
-    <Tab.Navigator initialRouteName="home" screenOptions={
-      {
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'lightblue',
-        tabBarStyle: {
-          backgroundColor: 'white',
-          shadowOpacity: 0.1,
-        },
-        headerShown: false,
-      }
-    }>
-      <Tab.Screen name="home" component={Home} options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <TabBarIcon name="home" color={focused ? 'blue' : 'lightblue'} size={size} />
-          )
-      }}
-      />
-      <Tab.Screen name="explore" component={Explore} options={{
-        tabBarIcon: ({ focused, color, size }) => (
-          <TabBarIcon name="search" color={focused ? 'blue' : 'lightblue'} size={size} />
-        )
-      }}
-      />
-    </Tab.Navigator>
-  )
-}
+type RootNavigatorParamsList = {
+  [Routes.Landing]: undefined;
+};
 
+type Routes = (typeof Routes)[keyof typeof Routes];
+
+type RootNavigationParams<R extends Routes> = StackNavigationProp<
+  RootNavigatorParamsList,
+  R
+>;
+
+type RootRouteProp<R extends Routes> = RouteProp<RootNavigatorParamsList, R>;
+
+export type RootRouteParams<R extends Routes> = RouteParams<
+  RootNavigationParams<R>,
+  RootRouteProp<R>
+>;
+
+const Stack = createStackNavigator<RootNavigatorParamsList>();
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
-        <Stack.Screen name="Landing Page" component={LandingPage} />
-        <Stack.Screen name="tabs" component={TabNavigator} />
+        <Stack.Screen name="landingPage" component={LandingPage} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default App
+export default App;
