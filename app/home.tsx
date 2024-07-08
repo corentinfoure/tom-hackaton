@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native"
-import { HelloWave } from "@/components/HelloWave"
-import { ThemedText } from "@/components/ThemedText"
+import { HelloWave } from "@/components/style/HelloWave"
+import { ThemedText } from "@/components/style/ThemedText"
 
 export const Home = () => {
 

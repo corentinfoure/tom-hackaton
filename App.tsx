@@ -43,7 +43,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
-        <Stack.Screen name="landingPage" component={LandingPage} />
+        <Stack.Screen name="Landing Page" component={LandingPage} />
         <Stack.Screen name="tabs" component={TabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

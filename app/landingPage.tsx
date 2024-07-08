@@ -1,4 +1,4 @@
-import { ThemedText } from '@/components/ThemedText'
+import { ThemedText } from '@/components/style/ThemedText'
 import { Pressable, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
