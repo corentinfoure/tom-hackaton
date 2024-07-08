@@ -14,7 +14,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   return (
     <View>
         <ProgressBar currentStep={1} totalSteps={6} />
-        <ThemedText>Landing page</ThemedText>
+        <Pressable onPress={() => navigation.navigate('home')}>
+          <ThemedText>Landing page</ThemedText>
+        </Pressable>
         <InputText value={''} largeInput onChangeText={(value) => console.log(value)} />
         <View style={styles.buttonsContainer}>
             <CustomButton title={'PRECEDENT'} handleOnPress={() => console.log('hello')} />
