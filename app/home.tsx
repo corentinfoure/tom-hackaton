@@ -1,41 +1,55 @@
-import { StyleSheet, View } from "react-native"
-import { HelloWave } from "@/components/HelloWave"
-import { ThemedText } from "@/components/style/ThemedText"
-import { Container3Layout } from "@/components/shared/Container3layout"
-import type { ItemData } from "@/components/shared/Container3layout"
+import { RootRouteParams } from "@/App";
+import type { ItemData } from "@/components/shared/Container3Layout";
+import { Container3Layout } from "@/components/shared/Container3Layout";
+import { ThemedText } from "@/components/style/ThemedText";
+import { useEffect } from "react";
+import { Pressable, SafeAreaView, StyleSheet, View } from "react-native";
 
-export const Home = () => {
+type HomeProps = RootRouteParams<"home">;
 
+export const Home: React.FC<HomeProps> = ({ navigation }) => {
   const items: ItemData[] = [
     {
-      title: "ITEM 1",
-      image: require('@/assets/images/react-logo.png')
+      title: "Préparer une prise de parole",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("speechCreate"),
     },
     {
-      title: "ITEM 2",
-      image: require('@/assets/images/react-logo.png')
+      title: "Mes conseils",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("advices"),
     },
     {
-      title: "ITEM 3 ",
-      image: require('@/assets/images/react-logo.png')
+      title: "Mes prises de parole",
+      image: require("@/assets/images/react-logo.png"),
+      onPress: () => navigation.navigate("speechPreps"),
     },
-  ]
+  ];
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Pressable
+          onPress={() => navigation.navigate("landingPage")}
+          style={{ marginRight: 16 }}
+        >
+          <ThemedText>{"T"}</ThemedText>
+        </Pressable>
+      ),
+    });
+  }, [navigation]);
 
   return (
-    <View>
-      <View style={styles.titleContainer}>
-        <ThemedText type="title">Welcome Home!</ThemedText>
-        <HelloWave />
-        <Container3Layout items={items}/>
-      </View>
-    </View>
-  )
-}
+    <SafeAreaView style={styles.titleContainer}>
+      <Container3Layout items={items} />
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "column",
     alignItems: "center",
-    gap: 8,
+    marginTop: 20,
   },
-})
+});
