@@ -11,7 +11,7 @@ const Routes = {
 } as const;
 
 type SpeechCreateNavigatorParamsList = {
-  [Routes.Root]: undefined;
+  [Routes.Root]: { step: number };
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -47,6 +47,9 @@ export const SpeechCreateNavigator = () => {
         component={SpeechCreate}
         options={{
           title: "Créer une prise de parole",
+        }}
+        initialParams={{
+          step: 0,
         }}
       />
     </Stack.Navigator>
