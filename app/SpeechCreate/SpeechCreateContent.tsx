@@ -3,22 +3,22 @@ import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { View } from "react-native";
 
-type SpeechCreateProps = SpeechCreateRouteParams<"root">;
+type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateContent">;
 
-export const SpeechCreate: React.FC<SpeechCreateProps> = ({
+export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
   navigation,
   route,
 }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
+      <ProgressBar currentStep={1} totalSteps={6} />
       <QuestionTemplate
         id="1"
-        answer={undefined}
-        title="Qui je suis"
-        example={"example 1"}
-        suggestions={[]}
+        answer1={undefined}
+        title="De quoi je veux parler ?"
+        input1="J’indique le titre de ma prise parole"
         onNext={() => {
-          navigation.push("root", { step: route.params.step + 1 });
+          navigation.push("SpeechCreateName", { step: 0 });
         }}
       />
     </View>

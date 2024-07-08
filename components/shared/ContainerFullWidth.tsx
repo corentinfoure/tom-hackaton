@@ -24,7 +24,7 @@ export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
           <Pressable
             {...rest}
             style={[styles.itemContainer, { marginTop: index > 0 ? 10 : 0 }]}
-            key={item.title}
+            key={index}
           >
             <View style={styles.imageContainer}>
               <Image source={item.image} style={styles.image} />
