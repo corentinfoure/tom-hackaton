@@ -5,15 +5,17 @@ import {
 } from "@react-navigation/stack";
 import React from "react";
 import { LandingPage } from "./app/landingPage";
+import { Home } from "./app/home"
 import { RouteParams } from "./navigation/RouteParams";
-import { Image } from "react-native";
 
 const Routes = {
   Landing: "landingPage",
+  Home: "home",
 } as const;
 
 type RootNavigatorParamsList = {
   [Routes.Landing]: undefined;
+  [Routes.Home]: undefined;
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -36,6 +38,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
         <Stack.Screen name="landingPage" component={LandingPage} />
+        <Stack.Screen name='home' component={Home}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

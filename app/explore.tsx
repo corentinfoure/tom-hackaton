@@ -1,6 +1,6 @@
 import { StyleSheet, Image, View } from "react-native"
-import { Collapsible } from "@/components/Collapsible"
-import { ThemedText } from "@/components/ThemedText"
+import { Collapsible } from "@/components/style/Collapsible"
+import { ThemedText } from "@/components/style/ThemedText"
 
 export const Explore = () => {
   return (
