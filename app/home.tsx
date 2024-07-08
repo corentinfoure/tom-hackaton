@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native"
 import { HelloWave } from "@/components/HelloWave"
 import { ThemedText } from "@/components/style/ThemedText"
-import { ImageContainer3layout } from "@/components/shared/ImageContainer"
-import type { ItemData } from "@/components/shared/ImageContainer"
+import { Container3Layout } from "@/components/shared/Container3layout"
+import type { ItemData } from "@/components/shared/Container3layout"
 
 export const Home = () => {
 
@@ -26,7 +26,7 @@ export const Home = () => {
       <View style={styles.titleContainer}>
         <ThemedText type="title">Welcome Home!</ThemedText>
         <HelloWave />
-        <ImageContainer3layout items={items}/>
+        <Container3Layout items={items}/>
       </View>
     </View>
   )

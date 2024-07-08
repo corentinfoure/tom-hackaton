@@ -6,7 +6,7 @@ export type ItemData = {
     image: ImageSourcePropType,
 }
 
-export const ImageContainer3layout: React.FC<{items: ItemData[]}> = ({items}) => {
+export const Container3Layout: React.FC<{items: ItemData[]}> = ({items}) => {
 
     return (
 
