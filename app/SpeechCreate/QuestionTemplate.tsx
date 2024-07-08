@@ -5,9 +5,10 @@ import { useState } from "react";
 import { View } from "react-native";
 import { QuestionExample } from "./QuestionExample";
 import { useNavigation } from "@react-navigation/native";
+import { SpeechKey } from "./hooks/useSpeech";
 
 type QuestionTemplateProps = {
-  id: string;
+  id: SpeechKey;
   title: string;
   example?: string;
   input1?: string;
@@ -16,6 +17,7 @@ type QuestionTemplateProps = {
   answer2?: string;
   suggestions?: string[];
   onNext: () => void;
+  onChangeAnswer: (value: string) => void;
 };
 
 export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
@@ -28,19 +30,45 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   answer1,
   answer2,
   onNext,
+  onChangeAnswer,
 }) => {
-  const [value1, setValue1] = useState<string | undefined>(answer1)
-  const [value2, setValue2] = useState<string | undefined>(answer2)
+  const [value1, setValue1] = useState<string | undefined>(answer1);
+  const [value2, setValue2] = useState<string | undefined>(answer2);
 
   const navigation = useNavigation();
   return (
     <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
       <ThemedText type="title">{title}</ThemedText>
       {example && <QuestionExample text={example} style={{ marginTop: 10 }} />}
-      {input1 &&<InputText title={input1} value={answer1} onChangeText={setValue1} largeInput />}
-      {input2 &&<InputText title={input2} value={answer2} onChangeText={setValue2} largeInput />}
-      <CustomButton title="Valider" handleOnPress={onNext} variant="primary" style={{marginVertical: 10,}}/>
-      <CustomButton title="Je retourne à l'étape précédente" handleOnPress={navigation.goBack} variant="secondary" />
+      {input1 && (
+        <InputText
+          title={input1}
+          value={answer1}
+          onChangeText={setValue1}
+          largeInput
+        />
+      )}
+      {input2 && (
+        <InputText
+          title={input2}
+          value={answer2}
+          onChangeText={setValue2}
+          largeInput
+        />
+      )}
+      <CustomButton
+        title="Valider"
+        handleOnPress={onNext}
+        variant="primary"
+        style={{ marginVertical: 10 }}
+      />
+      <CustomButton
+        title="Je retourne à l'étape précédente"
+        handleOnPress={navigation.goBack}
+        variant="secondary"
+      />
+      {/* <InputText value={answer} onChangeText={onChangeAnswer} largeInput /> */}
+      <CustomButton title="Valider" handleOnPress={onNext} variant="primary" />
     </View>
   );
 };
