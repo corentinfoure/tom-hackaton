@@ -1,6 +1,6 @@
 import { RootRouteParams } from "@/App";
-import type { ItemData } from "@/components/shared/ImageContainer";
-import { ImageContainer3layout } from "@/components/shared/ImageContainer";
+import type { ItemData } from "@/components/shared/Container3Layout";
+import { Container3Layout } from "@/components/shared/Container3Layout";
 import { ThemedText } from "@/components/style/ThemedText";
 import { useEffect } from "react";
 import { Pressable, SafeAreaView, StyleSheet, View } from "react-native";
@@ -41,7 +41,7 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.titleContainer}>
-      <ImageContainer3layout items={items} />
+      <Container3Layout items={items} />
     </SafeAreaView>
   );
 };

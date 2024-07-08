@@ -1,11 +1,15 @@
 import { ThemedText } from '@/components/style/ThemedText'
 import { Pressable, View, StyleSheet } from 'react-native'
 import { ProgressBar } from '@/components/shared/ProgressBar'
-import { CustomButton } from '@/components/shared/CustomButton'
-import { InputText } from '@/components/shared/InputText'
+import { Container2Layout } from '@/components/shared/Container2Layout'
 import { RootRouteParams } from "@/App"
 
-type LandingPageProps = RootRouteParams<"landingPage">;
+type LandingPageProps = RootRouteParams<"landingPage">
+
+const items = [
+  {label: 'hello'},
+  {label: 'world'},
+]
 
 export const LandingPage: React.FC<LandingPageProps> = ({
   navigation,
@@ -15,13 +19,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     <View>
         <ProgressBar currentStep={1} totalSteps={6} />
         <Pressable onPress={() => navigation.navigate('home')}>
-          <ThemedText>Landing page</ThemedText>
+          <ThemedText type='link'>Landing page</ThemedText>
         </Pressable>
-        <InputText value={''} largeInput onChangeText={(value) => console.log(value)} />
-        <View style={styles.buttonsContainer}>
-            <CustomButton title={'PRECEDENT'} handleOnPress={() => console.log('hello')} />
-            <CustomButton title={'SUIVANT'} handleOnPress={() => console.log('hello')} />
-        </View>
+        <Container2Layout items={items} />
     </View>
   )
 }

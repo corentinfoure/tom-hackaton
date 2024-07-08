@@ -13,7 +13,7 @@ export type ItemData = {
   image: ImageSourcePropType;
 } & Omit<PressableProps, "style">;
 
-export const ImageContainer3layout: React.FC<{ items: ItemData[] }> = ({
+export const Container3Layout: React.FC<{ items: ItemData[] }> = ({
   items,
 }) => {
   return (
