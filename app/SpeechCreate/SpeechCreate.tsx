@@ -15,7 +15,7 @@ export const SpeechCreate: React.FC<SpeechCreateProps> = ({
         id="1"
         answer={undefined}
         title="Qui je suis"
-        examples={["example 1", "example 2"]}
+        example={"example 1"}
         suggestions={[]}
         onNext={() => {
           navigation.push("root", { step: route.params.step + 1 });

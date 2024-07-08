@@ -3,11 +3,12 @@ import { InputText } from "@/components/shared/InputText";
 import { ThemedText } from "@/components/style/ThemedText";
 import { useState } from "react";
 import { View } from "react-native";
+import { QuestionExample } from "./QuestionExample";
 
 type QuestionTemplateProps = {
   id: string;
   title: string;
-  examples: string[];
+  example: string;
   suggestions: string[];
   answer?: string;
   onNext: () => void;
@@ -17,7 +18,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   id,
   title,
   suggestions,
-  examples,
+  example,
   answer,
   onNext,
 }) => {
@@ -25,15 +26,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   return (
     <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
       <ThemedText type="title">{title}</ThemedText>
-      {examples.length > 0 && (
-        <View style={{ paddingLeft: 20 }}>
-          {examples.map((example, index) => (
-            <ThemedText key={index} type="default">
-              {`• ` + example}
-            </ThemedText>
-          ))}
-        </View>
-      )}
+      {example && <QuestionExample text={example} />}
       <InputText value={answer} onChangeText={setValue} largeInput />
       <CustomButton title="Valider" handleOnPress={onNext} />
     </View>
