@@ -12,7 +12,8 @@ export type SpeechKey =
   | "age"
   | "occupations"
   | "subject"
-  | "publicAudience";
+  | "publicAudience"
+  | "strongMessage";
 
 type Speech = Record<SpeechKey, string>;
 

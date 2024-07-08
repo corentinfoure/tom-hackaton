@@ -20,6 +20,7 @@ type InputProps = {
 
 type QuestionTemplateProps = {
   title: string;
+  subtitle?: string;
   example?: string;
   input1: InputProps;
   input2?: InputProps;
@@ -30,6 +31,7 @@ type QuestionTemplateProps = {
 
 export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   title,
+  subtitle,
   input1,
   input2,
   suggestions,
@@ -40,6 +42,11 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   return (
     <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
       <ThemedText type="title">{title}</ThemedText>
+      {subtitle && (
+        <ThemedText type="subtitle" style={{ marginTop: 10 }}>
+          {subtitle}
+        </ThemedText>
+      )}
       {example && <QuestionExample text={example} style={{ marginTop: 10 }} />}
       {suggestions && suggestions.length > 0 && (
         <ContainerHalfWidth

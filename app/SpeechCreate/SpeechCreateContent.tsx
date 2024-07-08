@@ -12,8 +12,7 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
   route,
 }) => {
   const { create, update } = useSpeech();
-  const [content, setContent] = useState<string | undefined>(undefined);
-  const [uuid, setUUID] = useState<string | undefined>(undefined);
+  const [content, setContent] = useState<string[]>([]);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>

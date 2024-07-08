@@ -10,6 +10,7 @@ import { SpeechCreateProfession } from "./SpeechCreateProfession";
 import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject";
 import { SpeechCreatePublic } from "./SpeechCreatePublic";
 import { SpeechCreateTitle } from "./SpeechCreateTitle";
+import { SpeechCreateStrongMessage } from "./SpeechCreateStrongMessage";
 
 const Routes = {
   SpeechCreateContent: "SpeechCreateContent",
@@ -18,6 +19,7 @@ const Routes = {
   SpeechCreateProfession: "SpeechCreateProfession",
   SpeechCreateChooseSubject: "SpeechCreateChooseSubject",
   SpeechCreatePublic: "SpeechCreatePublic",
+  SpeechCreateStrongMessage: "SpeechCreateStrongMessage",
 } as const;
 
 type UUIDUpdatable = {
@@ -31,6 +33,7 @@ type SpeechCreateNavigatorParamsList = {
   [Routes.SpeechCreateProfession]: { step: number } & UUIDUpdatable;
   [Routes.SpeechCreateChooseSubject]: { step: number } & UUIDUpdatable;
   [Routes.SpeechCreatePublic]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreateStrongMessage]: { step: number } & UUIDUpdatable;
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -102,6 +105,13 @@ export const SpeechCreateNavigator = () => {
       <Stack.Screen
         name="SpeechCreatePublic"
         component={SpeechCreatePublic}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateStrongMessage"
+        component={SpeechCreateStrongMessage}
         options={{
           title: "Créer une prise de parole",
         }}

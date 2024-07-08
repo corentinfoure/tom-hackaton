@@ -36,9 +36,10 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <ProgressBar currentStep={4} totalSteps={6} />
       <QuestionTemplate
-        title="Je sélectionne mon sujet"
+        title="Qui est mon public"
+        subtitle="Quand je sais à qui je m'adresse, je peux préparer mon discours en pensant à mon public."
         input1={{
-          title: "Précise ton sujet ici si il ne fait pas partis de la liste",
+          title: "Précise ton public ici s'il ne fait pas partis de la liste",
           onChangeText: setPublicAudience,
           value: publicAudience,
         }}
