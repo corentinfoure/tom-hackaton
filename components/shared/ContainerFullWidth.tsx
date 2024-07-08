@@ -9,7 +9,7 @@ import {
 import { ThemedText } from "../style/ThemedText";
 
 export type ItemData = {
-  title: string;
+  title?: string;
   image: ImageSourcePropType;
 } & Omit<PressableProps, "style">;
 
@@ -29,9 +29,11 @@ export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
             <View style={styles.imageContainer}>
               <Image source={item.image} style={styles.image} />
             </View>
+            {title &&
             <ThemedText type="subtitle" style={styles.title}>
               {item.title}
             </ThemedText>
+      }
           </Pressable>
         );
       })}
@@ -48,17 +50,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   itemContainer: {
-    borderWidth: 1,
     borderRadius: 10,
-    width: "90%",
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
   },
   imageContainer: {},
   image: {
-    // width: 100,
-    // height: 100,
+    width: 180,
+    height: 180,
   },
   title: {
     marginVertical: 5,

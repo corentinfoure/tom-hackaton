@@ -10,18 +10,15 @@ type HomeProps = RootRouteParams<"home">;
 export const Home: React.FC<HomeProps> = ({ navigation }) => {
   const items: ItemData[] = [
     {
-      title: "Préparer une prise de parole",
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/images/ConseilCard.png"),
       onPress: () => navigation.navigate("speechCreate"),
     },
     {
-      title: "Mes conseils",
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/images/PrepareCard.png"),
       onPress: () => navigation.navigate("advices"),
     },
     {
-      title: "Mes prises de parole",
-      image: require("@/assets/images/react-logo.png"),
+      image: require("@/assets/images/ConseilCard.png"),
       onPress: () => navigation.navigate("speechPreps"),
     },
   ];
