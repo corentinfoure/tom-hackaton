@@ -1,14 +1,19 @@
 import { ThemedText } from "@/components/style/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type QuestionExampleProps = {
   text: string;
+
+  style?: StyleProp<ViewStyle>;
 };
 
-export const QuestionExample: React.FC<QuestionExampleProps> = ({ text }) => {
+export const QuestionExample: React.FC<QuestionExampleProps> = ({
+  text,
+  style,
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Ionicons name="information-circle" size={24} color="#006FFD" />
       <View style={styles.textContainer}>
         <ThemedText type="subtitle" style={styles.title}>

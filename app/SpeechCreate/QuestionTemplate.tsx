@@ -26,9 +26,9 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   return (
     <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
       <ThemedText type="title">{title}</ThemedText>
-      {example && <QuestionExample text={example} />}
+      {example && <QuestionExample text={example} style={{ marginTop: 10 }} />}
       <InputText value={answer} onChangeText={setValue} largeInput />
-      <CustomButton title="Valider" handleOnPress={onNext} />
+      <CustomButton title="Valider" handleOnPress={onNext} variant="primary" />
     </View>
   );
 };

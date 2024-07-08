@@ -1,15 +1,24 @@
-import { View, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  Pressable,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { ThemedText } from "../style/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
+import { theme } from "../style/colors";
 
 type IoniconNames = keyof typeof Ionicons.glyphMap;
 
 type ButtonType = {
+  variant: "primary" | "secondary";
   title: string;
   handleOnPress: () => void;
   leftIcon?: IoniconNames;
   rightIcon?: IoniconNames;
+  style?: StyleProp<ViewStyle>;
 };
 
 export const CustomButton = ({
@@ -17,16 +26,28 @@ export const CustomButton = ({
   handleOnPress,
   leftIcon,
   rightIcon,
+  variant,
+  style,
 }: ButtonType) => {
   return (
-    <Pressable style={styles.button} onPress={handleOnPress}>
+    <Pressable
+      style={[styles[variant], styles.button, style]}
+      onPress={handleOnPress}
+    >
       {leftIcon ? (
         <Ionicons name={leftIcon} size={24} color="black" />
       ) : (
         <View style={styles.emptyIcon} />
       )}
       <View>
-        <ThemedText type="subtitle">{title}</ThemedText>
+        <ThemedText
+          type="subtitle"
+          style={[
+            variant === "primary" ? styles.textPrimary : styles.textSecondary,
+          ]}
+        >
+          {title}
+        </ThemedText>
       </View>
       {rightIcon ? (
         <Ionicons name={rightIcon} size={24} color="black" />
@@ -40,16 +61,29 @@ export const CustomButton = ({
 const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
-    backgroundColor: "lightgreen",
     padding: 10,
     borderWidth: 1,
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius: 5,
-    width: "45%",
+    width: "100%",
+  },
+  primary: {
+    backgroundColor: theme.button.primary.background,
+    borderColor: theme.button.primary.border,
+  },
+  secondary: {
+    backgroundColor: theme.button.secondary.background,
+    borderColor: theme.button.secondary.border,
   },
   emptyIcon: {
     width: 24,
     height: 24,
+  },
+  textPrimary: {
+    color: theme.button.primary.text,
+  },
+  textSecondary: {
+    color: theme.button.secondary.text,
   },
 });

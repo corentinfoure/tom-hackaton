@@ -6,6 +6,7 @@ import {
   ItemData,
 } from "@/components/shared/ContainerHalfWidth";
 import { RootRouteParams } from "@/App";
+import { CustomButton } from "@/components/shared/CustomButton";
 
 type LandingPageProps = RootRouteParams<"landingPage">;
 
@@ -32,6 +33,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <ThemedText type="link">Landing page</ThemedText>
       </Pressable>
       <ContainerHalfWidth items={items} spacing={5} />
+
+      <CustomButton
+        title="Primary"
+        variant="primary"
+        handleOnPress={() => {}}
+      />
+      <CustomButton
+        title="secondary"
+        variant="secondary"
+        handleOnPress={() => {}}
+      />
     </View>
   );
 };

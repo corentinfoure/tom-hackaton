@@ -23,11 +23,18 @@ export const ContainerHalfWidth: React.FC<{
                 marginTop: index > 0 ? spacing : 0,
               }}
             >
-              <CustomButton title={item.label} handleOnPress={item.onPress} />
+              <CustomButton
+                title={item.label}
+                handleOnPress={item.onPress}
+                variant="primary"
+                style={{ width: "45%" }}
+              />
               {items[index + 1] && (
                 <CustomButton
                   title={items[index + 1].label}
                   handleOnPress={items[index + 1].onPress}
+                  variant="primary"
+                  style={{ width: "45%" }}
                 />
               )}
             </View>
