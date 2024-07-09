@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
-import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { Speech, useSpeech } from "./hooks/useSpeech";
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleProp,
-  View,
-  ViewStyle,
-} from "react-native";
-import { ThemedText } from "@/components/style/ThemedText";
-import { Idea } from "./CreateIdea";
-import { QuestionExample } from "./QuestionExample";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import React, { useEffect, useState } from "react";
+
+import { SpeechPrepsRouteParams } from "./SpeechPreps.navigator";
 import { CustomButton } from "@/components/shared/CustomButton";
+import { Speech, useSpeech } from "../SpeechCreate/hooks/useSpeech";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
+import { ThemedText } from "@/components/style/ThemedText";
+import { QuestionExample } from "../SpeechCreate/QuestionExample";
+import { Idea } from "../SpeechCreate/CreateIdea";
 
-type SpeechSummaryProps = SpeechCreateRouteParams<"SpeechCreateSummary">;
+type SpeechDetailsProps = SpeechPrepsRouteParams<"details">;
 
-export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
-  route,
+export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
   navigation,
+  route,
 }) => {
   const { uuid } = route.params;
 
@@ -51,7 +46,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
           paddingBottom: bottom,
         }}
       >
-        <ThemedText type="title">{`🎤 ${data.title}`}</ThemedText>
+        <ThemedText type="title">{data.title}</ThemedText>
         <Card
           title={"Ma présentation"}
           style={{ marginTop: 16 }}
@@ -86,7 +81,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
 
         <CustomButton
           style={{ marginTop: 32 }}
-          title={"Modifier ma présentation"}
+          title={"Retour a la liste des discours"}
           handleOnPress={navigation.goBack}
           variant="secondary"
           leftIcon="chevron-back-outline"
@@ -95,7 +90,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
         <CustomButton
           title={"Retourner a l'accueil"}
           handleOnPress={() => {
-            navigation.reset({ routes: [{ name: "home" }] });
+            // navigation.reset({ routes: [{ name: "home" }] });
           }}
           variant="primary"
           style={{ marginTop: 16 }}

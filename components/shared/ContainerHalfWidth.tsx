@@ -30,7 +30,7 @@ const DottedSuggestion: React.FC<ItemData> = ({ label, onPress, value }) => {
       }}
       onPress={() => onPress(value)}
     >
-      <ThemedText type="subtitle">{label}</ThemedText>
+      <ThemedText type="defaultSemiBold">{label}</ThemedText>
     </Pressable>
   );
 };

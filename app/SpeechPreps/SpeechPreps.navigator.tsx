@@ -5,13 +5,17 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import { SpeechPrepsList } from "./SpeechPrepsList";
+import { SpeechSummary } from "../SpeechCreate/SpeechSummary";
+import { SpeechDetails } from "./SpeechDetails";
 
 const Routes = {
   List: "list",
+  Details: "details",
 } as const;
 
 type SpeechPrepsNavigatorParamsList = {
   [Routes.List]: undefined;
+  [Routes.Details]: { uuid: string };
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -47,6 +51,13 @@ export const SpeechPrepsNavigator = () => {
         component={SpeechPrepsList}
         options={{
           title: "Mes prises de parole",
+        }}
+      />
+      <Stack.Screen
+        name="details"
+        component={SpeechDetails}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

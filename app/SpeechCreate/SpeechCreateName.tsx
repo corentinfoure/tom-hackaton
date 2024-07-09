@@ -24,7 +24,7 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
@@ -32,7 +32,7 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
       <ProgressBar currentStep={2} totalSteps={6} />
       <QuestionTemplate
         onBack={navigation.goBack}
-        title="Quel est mon prénom et mon age ?"
+        title="🙂 Qui suis-je ?"
         example="Je m'appelle Thomas, j'ai 27 ans"
         input1={{
           title: "Je m appelle",

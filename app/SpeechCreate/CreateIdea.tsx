@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type Idea = {
   idea: string;
@@ -22,9 +23,16 @@ export const CreateIdea: React.FC<CreateIdeaScreenProps> = ({ route }) => {
   const [exampleContent, setExampleContent] = useState<string>(
     idea?.example ?? ""
   );
-
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ backgroundColor: "white" }}>
+    <ScrollView
+      style={{ backgroundColor: "white" }}
+      contentContainerStyle={{
+        paddingTop: top,
+        paddingBottom: bottom,
+        paddingHorizontal: 32,
+      }}
+    >
       <QuestionTemplate
         input1={{
           onChangeText: setIdeaContent,
@@ -45,6 +53,6 @@ export const CreateIdea: React.FC<CreateIdeaScreenProps> = ({ route }) => {
         validateTitle="Valider l'idée"
         backTitle="Annuler mon idée"
       />
-    </View>
+    </ScrollView>
   );
 };

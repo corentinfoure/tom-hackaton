@@ -26,12 +26,14 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
-      <ThemedText type="title">{"Qu'est-ce que je veux leur dire"}</ThemedText>
+      <ThemedText type="title">
+        {"💬 Qu’est-ce que je veux leur dire"}
+      </ThemedText>
 
       <QuestionExample
         text={

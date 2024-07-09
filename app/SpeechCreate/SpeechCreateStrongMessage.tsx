@@ -22,14 +22,14 @@ export const SpeechCreateStrongMessage: React.FC<
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
       <ProgressBar currentStep={5} totalSteps={6} />
       <QuestionTemplate
-        title="Je termine par un message fort"
+        title="💪 Je termine par un message fort"
         subtitle="Le message fort, c'est l'idée importante. Je dis ou redis le message fort à la fin pour que le public s'en souvienne."
         input1={{
           title: "Indique ici ton message fort",

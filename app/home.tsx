@@ -27,7 +27,7 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
       image: require("@/assets/images/mic_external_on.png"),
       onPress: () => navigation.navigate("speechPreps"),
       backgroundColor: theme.homePage.background3,
-      title: "Mes prices de paroles",
+      title: "Mes prises de paroles",
     },
   ];
 
@@ -46,12 +46,20 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
 
   const { top, bottom } = useSafeAreaInsets();
 
-
   return (
-    <ScrollView style={styles.container} contentContainerStyle={ {paddingTop: top, paddingBottom: bottom, paddingHorizontal: 32}}>
-        <ThemedText type='title' style={styles.title}>👋 Que dois-je faire aujourd’hui ?</ThemedText>
-        <ContainerFullWidth items={items} />
-      </ScrollView>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{
+        paddingTop: top,
+        paddingBottom: bottom,
+        paddingHorizontal: 32,
+      }}
+    >
+      <ThemedText type="title" style={styles.title}>
+        👋 Que dois-je faire aujourd’hui ?
+      </ThemedText>
+      <ContainerFullWidth items={items} />
+    </ScrollView>
   );
 };
 
@@ -64,5 +72,5 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 20,
     marginBottom: 10,
-  }
+  },
 });

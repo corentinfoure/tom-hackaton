@@ -23,21 +23,21 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
       <ProgressBar currentStep={1} totalSteps={6} />
       <QuestionTemplate
-        title="De quoi je vais parler ?"
+        title="✍️ Je donne un titre"
         input1={{
           title: "J'indique le titre de ma prise parole",
           onChangeText: setTitle,
           value: title,
         }}
         onNext={async () => {
-          await clear();
+          // await clear();
           const updateWithUUID = async (uuid: string) => {
             await update(uuid, {
               answer: title || "",

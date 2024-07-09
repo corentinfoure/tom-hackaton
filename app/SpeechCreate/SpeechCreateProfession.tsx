@@ -22,15 +22,15 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
       <ProgressBar currentStep={3} totalSteps={6} />
       <QuestionTemplate
-        title="Ce que je fais dans la vie"
-        example="Mes loisirs : sports, musique...\nMon travail : cuisinier, caissier..."
+        title="💼 Ce que je fais dans la vie"
+        example={`Mes loisirs : sports, musique...\nMon travail : cuisinier, caissier...`}
         input1={{
           title: "Mes occupations",
           onChangeText: setOccupations,

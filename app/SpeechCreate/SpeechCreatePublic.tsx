@@ -41,14 +41,14 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
       <ProgressBar currentStep={4} totalSteps={6} />
       <QuestionTemplate
-        title="Qui est mon public"
+        title="🤠 Qui est mon public"
         subtitle="Quand je sais à qui je m'adresse, je peux préparer mon discours en pensant à mon public."
         input1={{
           title: "Précise ton public ici s'il ne fait pas partis de la liste",

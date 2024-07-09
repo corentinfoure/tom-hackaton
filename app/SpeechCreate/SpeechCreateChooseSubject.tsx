@@ -39,14 +39,14 @@ export const SpeechCreateChooseSubject: React.FC<SpeechCreateProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingTop: top,
         paddingBottom: bottom,
       }}
     >
       <ProgressBar currentStep={4} totalSteps={6} />
       <QuestionTemplate
-        title="Je sélectionne mon sujet"
+        title="💬 Je choisis mon sujet"
         input1={{
           title: "Précise ton sujet ici si il ne fait pas partis de la liste",
           onChangeText: setSubject,
