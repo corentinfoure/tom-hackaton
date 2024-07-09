@@ -48,8 +48,7 @@ const App = () => {
       <Stack.Navigator
         initialRouteName="home"
         screenOptions={{
-          headerBackTitleVisible: false,
-          headerTintColor: "black",
+          headerShown: false,
         }}
       >
         <Stack.Screen name="landingPage" component={LandingPage} />

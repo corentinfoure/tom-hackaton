@@ -11,6 +11,7 @@ import { ThemedText } from "../style/ThemedText";
 export type ItemData = {
   title?: string;
   image: ImageSourcePropType;
+  backgroundColor?: string;
 } & Omit<PressableProps, "style">;
 
 export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
@@ -19,16 +20,14 @@ export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
   return (
     <View style={styles.container}>
       {items.map((item, index) => {
-        const { image, title, ...rest } = item;
+        const { image, title, backgroundColor, ...rest } = item;
         return (
           <Pressable
             {...rest}
-            style={[styles.itemContainer, { marginTop: index > 0 ? 10 : 0 }]}
+            style={[styles.itemContainer, { marginTop: index > 0 ? 10 : 0, backgroundColor: backgroundColor}]}
             key={index}
           >
-            <View style={styles.imageContainer}>
-              <Image source={item.image} style={styles.image} />
-            </View>
+            <Image source={item.image} style={styles.image} />
             {title &&
             <ThemedText type="subtitle" style={styles.title}>
               {item.title}
@@ -43,23 +42,24 @@ export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: "column",
-    width: "100%",
-    height: "100%",
     alignItems: "center",
-    borderRadius: 10,
+    justifyContent: "center",
+    paddingTop: 10,
   },
   itemContainer: {
     borderRadius: 10,
     width: "100%",
+    height: 160,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    marginVertical: 10,
   },
-  imageContainer: {},
   image: {
-    width: 180,
-    height: 180,
+    width: 100,
+    height: 100,
   },
   title: {
     marginVertical: 5,
