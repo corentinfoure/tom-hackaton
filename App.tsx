@@ -10,6 +10,7 @@ import { RouteParams } from "./navigation/RouteParams";
 import { EmotionsNavigator } from "./app/Emotions/Emotions.navigator";
 import { SpeechPrepsNavigator } from "./app/SpeechPreps/SpeechPreps.navigator";
 import { SpeechCreateNavigator } from "./app/SpeechCreate/SpeechCreate.navigator";
+import { Splash } from "./components/navigation/Splash";
 
 const Routes = {
   Landing: "landingPage",
@@ -17,6 +18,7 @@ const Routes = {
   Advices: "advices",
   SpeechPreps: "speechPreps",
   SpeechCreate: "speechCreate",
+  Splash: "splash",
 } as const;
 
 type RootNavigatorParamsList = {
@@ -25,6 +27,7 @@ type RootNavigatorParamsList = {
   [Routes.Advices]: undefined;
   [Routes.SpeechPreps]: undefined;
   [Routes.SpeechCreate]: undefined;
+  [Routes.Splash]: undefined;
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -46,7 +49,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="home"
+        initialRouteName="splash"
         screenOptions={{
           headerBackTitleVisible: false,
           headerTintColor: "black",
@@ -65,6 +68,7 @@ const App = () => {
             headerShown: false,
           }}
         >
+          <Stack.Screen name={"splash"} component={Splash} />
           <Stack.Screen name={"advices"} component={EmotionsNavigator} />
           <Stack.Screen name={"speechPreps"} component={SpeechPrepsNavigator} />
           <Stack.Screen

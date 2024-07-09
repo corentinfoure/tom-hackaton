@@ -89,6 +89,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
           title={"Modifier ma présentation"}
           handleOnPress={navigation.goBack}
           variant="secondary"
+          leftIcon="chevron-back-outline"
         />
 
         <CustomButton
@@ -98,6 +99,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
           }}
           variant="primary"
           style={{ marginTop: 16 }}
+          rightIcon="checkmark-outline"
         />
       </ScrollView>
     )
