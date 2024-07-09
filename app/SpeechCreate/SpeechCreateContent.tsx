@@ -1,7 +1,7 @@
 import { CustomButton } from "@/components/shared/CustomButton";
 import { ThemedText } from "@/components/style/ThemedText";
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { Idea } from "./CreateIdea";
 import { IdeaRow } from "./IdeaRow";
 import { NewIdeaRow } from "./NewIdeaRow";
@@ -72,6 +72,10 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
       <CustomButton
         title={"Valider"}
         handleOnPress={async () => {
+          if(ideas.length == 0) {
+            Alert.alert("Attention", "Veuillez renseigner au moins une idée");
+            return
+          }
           await update(route.params.uuid, {
             answer: JSON.stringify(ideas),
             stepID: "ideas",

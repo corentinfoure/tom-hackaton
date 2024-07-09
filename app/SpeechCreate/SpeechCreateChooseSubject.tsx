@@ -1,7 +1,7 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import {
   ContainerHalfWidth,
   ItemData,
@@ -57,6 +57,10 @@ export const SpeechCreateChooseSubject: React.FC<SpeechCreateProps> = ({
           onPress: () => setSubject(item.value),
         }))}
         onNext={async () => {
+          if (!subject) {
+            Alert.alert("Attention", "Veuillez renseigner un sujet");
+            return;
+          }
           await update(route.params.uuid, {
             answer: subject || "",
             stepID: "subject",

@@ -1,7 +1,7 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import {
   ContainerHalfWidth,
   ItemData,
@@ -60,6 +60,10 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
           onPress: () => setPublicAudience(item.value),
         }))}
         onNext={async () => {
+          if (!publicAudience) {
+            Alert.alert("Attention", "Veuillez renseigner votre public");
+            return;
+          }
           await update(route.params.uuid, {
             answer: publicAudience || "",
             stepID: "publicAudience",
