@@ -27,7 +27,6 @@ export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
     const fetch = async () => {
       const speeches = await read();
       const speech = speeches[uuid];
-      console.log({ speech, speeches, uuid });
 
       setData(speech);
     };
@@ -81,7 +80,7 @@ export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
 
         <CustomButton
           style={{ marginTop: 32 }}
-          title={"Retour a la liste des discours"}
+          title={"Retour à la liste des discours"}
           handleOnPress={navigation.goBack}
           variant="secondary"
           leftIcon="chevron-back-outline"
@@ -90,7 +89,7 @@ export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
         <CustomButton
           title={"Retourner a l'accueil"}
           handleOnPress={() => {
-            // navigation.reset({ routes: [{ name: "home" }] });
+            navigation.reset({ routes: [{ name: "home" }] });
           }}
           variant="primary"
           style={{ marginTop: 16 }}

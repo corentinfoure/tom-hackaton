@@ -90,7 +90,7 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
         rightIcon="chevron-forward-outline"
       />
       <CustomButton
-        title={"Retour a l'étape précédente"}
+        title={"Retour à l'étape précédente"}
         handleOnPress={navigation.goBack}
         variant="secondary"
         leftIcon="chevron-back-outline"

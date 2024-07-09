@@ -97,7 +97,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
         rightIcon="chevron-forward-outline"
       />
       <CustomButton
-        title={backTitle ?? "Retour a l'étape précédente"}
+        title={backTitle ?? "Retour à l'étape précédente"}
         handleOnPress={onBack}
         variant="secondary"
         leftIcon="chevron-back-outline"

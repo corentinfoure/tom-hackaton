@@ -30,7 +30,6 @@ export const SpeechPrepsList: React.FC<SpeechPrepsRouteParams<"list">> = ({
     <ScrollView
       style={{ backgroundColor: "white" }}
       contentContainerStyle={{
-        paddingTop: 10,
         paddingBottom: bottom,
         paddingHorizontal: 24,
       }}
@@ -57,6 +56,7 @@ const SpeechPrepCard: React.FC<{ speech: Speech; onPress: () => void }> = ({
       onPress={onPress}
       style={{
         padding: 16,
+        marginTop: 16,
         borderWidth: 1,
         borderColor: "#006FFD",
         borderRadius: 12,

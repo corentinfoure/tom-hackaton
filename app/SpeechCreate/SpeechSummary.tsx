@@ -33,7 +33,6 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
     const fetch = async () => {
       const speeches = await read();
       const speech = speeches[uuid];
-      console.log({ speech, speeches, uuid });
 
       setData(speech);
     };
