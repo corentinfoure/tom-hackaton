@@ -30,7 +30,7 @@ export const CreateIdea: React.FC<CreateIdeaScreenProps> = ({ route }) => {
       contentContainerStyle={{
         paddingTop: top,
         paddingBottom: bottom,
-        paddingHorizontal: 32,
+        paddingHorizontal: 24,
       }}
     >
       <QuestionTemplate

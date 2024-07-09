@@ -6,14 +6,19 @@ import { useEffect } from "react";
 import { Pressable, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { theme } from "@/components/style/colors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useSpeech } from "./SpeechCreate/hooks/useSpeech";
 
 type HomeProps = RootRouteParams<"home">;
 
 export const Home: React.FC<HomeProps> = ({ navigation }) => {
+  const { clear } = useSpeech();
   const items: ItemData[] = [
     {
       image: require("@/assets/images/edit_square.png"),
-      onPress: () => navigation.navigate("speechCreate"),
+      onPress: () => {
+        // clear();
+        navigation.navigate("speechCreate");
+      },
       backgroundColor: theme.homePage.background1,
       title: "Je prépare mon discours",
     },
@@ -34,10 +39,7 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Pressable
-          onPress={() => navigation.navigate("landingPage")}
-          style={{ marginRight: 16 }}
-        >
+        <Pressable onPress={() => {}} style={{ marginRight: 16 }}>
           <ThemedText>{"T"}</ThemedText>
         </Pressable>
       ),
@@ -52,7 +54,7 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
       contentContainerStyle={{
         paddingTop: top,
         paddingBottom: bottom,
-        paddingHorizontal: 32,
+        paddingHorizontal: 24,
       }}
     >
       <ThemedText type="title" style={styles.title}>

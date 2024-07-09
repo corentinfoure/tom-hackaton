@@ -24,7 +24,7 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
         backgroundColor: "white",
       }}
       contentContainerStyle={{
-        paddingHorizontal: 32,
+        paddingHorizontal: 24,
         paddingTop: top,
         paddingBottom: bottom,
       }}
