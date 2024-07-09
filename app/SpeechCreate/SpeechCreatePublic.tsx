@@ -1,13 +1,14 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import {
   ContainerHalfWidth,
   ItemData,
 } from "@/components/shared/ContainerHalfWidth";
 import { useState } from "react";
 import { useSpeech } from "./hooks/useSpeech";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreatePublic = SpeechCreateRouteParams<"SpeechCreatePublic">;
 
@@ -32,8 +33,19 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
     undefined
   );
   const { update } = useSpeech();
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+      contentContainerStyle={{
+        paddingHorizontal: 16,
+        paddingTop: top,
+        paddingBottom: bottom,
+      }}
+    >
       <ProgressBar currentStep={4} totalSteps={6} />
       <QuestionTemplate
         title="Qui est mon public"
@@ -59,6 +71,6 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
         }}
         onBack={navigation.goBack}
       />
-    </View>
+    </ScrollView>
   );
 };

@@ -28,6 +28,8 @@ type QuestionTemplateProps = {
   suggestions?: ItemData[];
   onNext: () => void;
   onBack: () => void;
+  validateTitle?: string;
+  backTitle?: string;
 };
 
 export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
@@ -40,9 +42,11 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   titleExample="Exemple",
   onNext,
   onBack,
+  validateTitle,
+  backTitle,
 }) => {
   return (
-    <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
+    <View style={{ marginTop: 20 }}>
       <ThemedText type="title">{title}</ThemedText>
       {subtitle && (
         <ThemedText type="subtitle" style={{ marginTop: 10 }}>
@@ -80,13 +84,13 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
       )}
       {/* <InputText value={answer} onChangeText={onChangeAnswer} largeInput /> */}
       <CustomButton
-        title="Valider"
+        title={validateTitle ?? "Valider"}
         handleOnPress={onNext}
         variant="primary"
         style={{ marginTop: 24, marginBottom: 12 }}
       />
       <CustomButton
-        title="Retour a l'étape précédente"
+        title={backTitle ?? "Retour a l'étape précédente"}
         handleOnPress={onBack}
         variant="secondary"
       />
