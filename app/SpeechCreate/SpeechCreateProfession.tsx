@@ -27,7 +27,7 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={3} totalSteps={6} />
+      <ProgressBar currentStep={3} totalSteps={8} />
       <QuestionTemplate
         title="💼 Ce que je fais dans la vie"
         example={`Mes loisirs : sports, musique...\nMon travail : cuisinier, caissier...`}

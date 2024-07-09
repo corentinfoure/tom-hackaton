@@ -28,7 +28,7 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={1} totalSteps={6} />
+      <ProgressBar currentStep={1} totalSteps={8} />
       <QuestionTemplate
         title="✍️ Je donne un titre"
         input1={{

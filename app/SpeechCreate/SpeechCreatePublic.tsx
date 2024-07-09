@@ -46,7 +46,7 @@ export const SpeechCreatePublic: React.FC<SpeechCreatePublic> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={4} totalSteps={6} />
+      <ProgressBar currentStep={5} totalSteps={8} />
       <QuestionTemplate
         title="🤠 Qui est mon public"
         subtitle="Quand je sais à qui je m'adresse, je peux préparer mon discours en pensant à mon public."

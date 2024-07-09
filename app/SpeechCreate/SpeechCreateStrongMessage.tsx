@@ -27,7 +27,7 @@ export const SpeechCreateStrongMessage: React.FC<
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={5} totalSteps={6} />
+      <ProgressBar currentStep={7} totalSteps={8} />
       <QuestionTemplate
         title="💪 Je termine par un message fort"
         subtitle="Le message fort, c'est l'idée importante. Je dis ou redis le message fort à la fin pour que le public s'en souvienne."

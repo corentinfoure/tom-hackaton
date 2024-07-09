@@ -44,7 +44,7 @@ export const SpeechCreateChooseSubject: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={4} totalSteps={6} />
+      <ProgressBar currentStep={4} totalSteps={8} />
       <QuestionTemplate
         title="💬 Je choisis mon sujet"
         input1={{

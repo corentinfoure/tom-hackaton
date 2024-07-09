@@ -29,7 +29,7 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={2} totalSteps={6} />
+      <ProgressBar currentStep={2} totalSteps={8} />
       <QuestionTemplate
         onBack={navigation.goBack}
         title="🙂 Qui suis-je ?"

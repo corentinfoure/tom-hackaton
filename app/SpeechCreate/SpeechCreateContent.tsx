@@ -9,6 +9,7 @@ import { QuestionExample } from "./QuestionExample";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { useSpeech } from "./hooks/useSpeech";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ProgressBar } from "@/components/shared/ProgressBar";
 
 type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateContent">;
 
@@ -31,6 +32,7 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
+      <ProgressBar currentStep={6} totalSteps={8} />
       <ThemedText type="title">
         {"💬 Qu’est-ce que je veux leur dire"}
       </ThemedText>
