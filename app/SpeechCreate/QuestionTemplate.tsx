@@ -46,10 +46,10 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   backTitle,
 }) => {
   return (
-    <View style={{ marginTop: 20 }}>
+    <View >
       <ThemedText type="title">{title}</ThemedText>
       {subtitle && (
-        <ThemedText type="subtitle" style={{ marginTop: 10 }}>
+        <ThemedText type="default" style={{ marginTop: 10 }}>
           {subtitle}
         </ThemedText>
       )}

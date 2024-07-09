@@ -48,12 +48,10 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
 
 
   return (
-    // <View style={[styles.container, { paddingTop: top+50, paddingBottom: bottom }]}>
-      <ScrollView style={styles.container} contentContainerStyle={ {paddingTop: top, paddingBottom: bottom, paddingHorizontal: 32}}>
-          <ThemedText type='title' style={styles.title}>👋 Que dois-je faire aujourd’hui ?</ThemedText>
-          <ContainerFullWidth items={items} />
-        </ScrollView>
-    // </View>
+    <ScrollView style={styles.container} contentContainerStyle={ {paddingTop: top, paddingBottom: bottom, paddingHorizontal: 32}}>
+        <ThemedText type='title' style={styles.title}>👋 Que dois-je faire aujourd’hui ?</ThemedText>
+        <ContainerFullWidth items={items} />
+      </ScrollView>
   );
 };
 

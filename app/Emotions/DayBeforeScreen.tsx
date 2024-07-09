@@ -1,25 +1,33 @@
-import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { EmotionsRouteParams } from "./Emotions.navigator";
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { ThemedText } from "@/components/style/ThemedText";
 import { QuestionExample } from "../SpeechCreate/QuestionExample";
 import { CustomButton } from "@/components/shared/CustomButton";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { FigureAndText } from "./FigureAndText";
 
 type EmotionsProps = EmotionsRouteParams<'DayBefore'>;
 
 export const DayBeforeScreen: React.FC<EmotionsProps> = ({ navigation, route }) => {
 
+    const { top, bottom } = useSafeAreaInsets();
+
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-            <ScrollView>
+        <ScrollView
+            style={{
+                flex: 1,
+                backgroundColor: "white",
+            }}
+            contentContainerStyle={{
+                paddingHorizontal: 24,
+                paddingTop: top,
+                paddingBottom: bottom,
+            }}
+        >
                 <ProgressBar currentStep={4} totalSteps={5} />
-                <ThemedText type="title">La veille de mon discours</ThemedText>
-                <View style={styles.textAndFigureContainer}>
-                    <View style={styles.figureContainer}>
-                        <Text style={styles.figure}>1</Text>
-                    </View>
-                    <ThemedText type="subtitle">Je vérifie sur mon programme et le matériel dont j’ai besoin.</ThemedText>
-                </View>
+                <ThemedText type="title">⏰ La veille de mon discours</ThemedText>
+                <FigureAndText figure={1} text={"Je vérifie sur mon programme et le matériel dont j’ai besoin."} />
 
                 <QuestionExample text={`Voici une liste de matériel :
 - Mes post-its
@@ -38,7 +46,6 @@ export const DayBeforeScreen: React.FC<EmotionsProps> = ({ navigation, route }) 
                     handleOnPress={navigation.goBack}
                     variant="secondary" />
             </ScrollView>
-        </SafeAreaView>
     )
 }
 
