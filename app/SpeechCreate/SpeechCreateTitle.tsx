@@ -47,7 +47,6 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
               answer: title || "",
               stepID: "title",
             });
-            console.log({ data: await read() });
 
             navigation.navigate("SpeechCreateName", {
               uuid: uuid,

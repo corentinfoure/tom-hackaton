@@ -2,8 +2,11 @@ export const theme = {
   background: "white",
   homePage: {
     background1: "#EAF2FF",
-    background2: "#FFF2EA",
+    border1: "#006FFD",
+    background2: "#F8EDFD",
+    border2: '#892FFF',
     background3: "#EFF7E1",
+    border3: "#699B11",
   },
   statusbar: {
     background: "white",

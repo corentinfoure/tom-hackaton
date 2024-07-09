@@ -20,18 +20,21 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
         navigation.navigate("speechCreate");
       },
       backgroundColor: theme.homePage.background1,
+      borderColor: theme.homePage.border1,
       title: "Je prépare mon discours",
     },
     {
       image: require("@/assets/images/chat_info.png"),
       onPress: () => navigation.navigate("advices"),
       backgroundColor: theme.homePage.background2,
+      borderColor: theme.homePage.border2,
       title: "Mes conseils",
     },
     {
       image: require("@/assets/images/mic_external_on.png"),
       onPress: () => navigation.navigate("speechPreps"),
       backgroundColor: theme.homePage.background3,
+      borderColor: theme.homePage.border3,
       title: "Mes prises de paroles",
     },
   ];
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "white",
+    backgroundColor: "#FFFCF6",
   },
   title: {
     marginTop: 20,

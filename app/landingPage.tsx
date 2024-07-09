@@ -10,17 +10,6 @@ import { CustomButton } from "@/components/shared/CustomButton";
 
 type LandingPageProps = RootRouteParams<"landingPage">;
 
-const items: ItemData[] = [
-  { label: "hello", onPress: () => console.log("hello") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-  { label: "world", onPress: () => console.log("world") },
-];
 
 export const LandingPage: React.FC<LandingPageProps> = ({
   navigation,
@@ -32,7 +21,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <Pressable onPress={() => navigation.navigate("home")}>
         <ThemedText type="link">Landing page</ThemedText>
       </Pressable>
-      <ContainerHalfWidth items={items} spacing={5} />
 
       <CustomButton
         title="Primary"

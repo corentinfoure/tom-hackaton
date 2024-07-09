@@ -43,7 +43,6 @@ export const useSpeech = () => {
     if (data) {
       const speeches: Record<string, Speech> = JSON.parse(data);
       const speechToUpdate = speeches[id];
-      console.log({ speechToUpdate });
 
       if (!speechToUpdate) {
         throw new Error("Speech not found");
@@ -53,7 +52,6 @@ export const useSpeech = () => {
         ...speechToUpdate,
         [answer.stepID]: answer.answer,
       };
-      console.log({ updatedSpeech });
 
       await AsyncStorage.setItem(
         storageKey,
