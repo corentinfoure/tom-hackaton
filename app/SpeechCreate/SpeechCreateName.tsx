@@ -1,7 +1,7 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { useState } from "react";
 import { useSpeech } from "./hooks/useSpeech";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -29,7 +29,7 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={2} totalSteps={6} />
+      <ProgressBar currentStep={2} totalSteps={8} />
       <QuestionTemplate
         onBack={navigation.goBack}
         title="🙂 Qui suis-je ?"
@@ -45,6 +45,14 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
           value: age,
         }}
         onNext={async () => {
+          if(!name) {
+            Alert.alert("Attention", "Veuillez renseigner votre nom");
+            return
+          }
+          if(!age) {
+            Alert.alert("Attention", "Veuillez renseigner votre age");
+            return
+          }
           await update(route.params.uuid, {
             answer: name || "",
             stepID: "name",

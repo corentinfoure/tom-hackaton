@@ -13,6 +13,7 @@ import { Idea } from "./CreateIdea";
 import { QuestionExample } from "./QuestionExample";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CustomButton } from "@/components/shared/CustomButton";
+import { ProgressBar } from "@/components/shared/ProgressBar";
 
 type SpeechSummaryProps = SpeechCreateRouteParams<"SpeechCreateSummary">;
 
@@ -51,6 +52,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
           paddingBottom: bottom,
         }}
       >
+        <ProgressBar currentStep={8} totalSteps={8} />
         <ThemedText type="title">{`🎤 ${data.title}`}</ThemedText>
         <Card
           title={"Ma présentation"}

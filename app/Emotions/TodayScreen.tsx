@@ -25,7 +25,7 @@ export const TodayScreen: React.FC<EmotionsProps> = ({ navigation, route }) => {
                 paddingBottom: bottom,
             }}
         >
-                <ProgressBar currentStep={4} totalSteps={5} />
+                <ProgressBar currentStep={5} totalSteps={5} />
                 <ThemedText type="title">🎤 Le jour de mon intervention</ThemedText>
                 <FigureAndText figure={1} text={"J’arrive au moins 30 minutes en avance pour préparer la salle et mon matériel."} />
                 <FigureAndText figure={2} text={"Je prépare les tables et les chaises pour mon public et pour moi."} />

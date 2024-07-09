@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { useSpeech } from "./hooks/useSpeech";
@@ -27,7 +27,7 @@ export const SpeechCreateStrongMessage: React.FC<
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={5} totalSteps={6} />
+      <ProgressBar currentStep={7} totalSteps={8} />
       <QuestionTemplate
         title="💪 Je termine par un message fort"
         subtitle="Le message fort, c'est l'idée importante. Je dis ou redis le message fort à la fin pour que le public s'en souvienne."
@@ -37,6 +37,10 @@ export const SpeechCreateStrongMessage: React.FC<
           value: message,
         }}
         onNext={async () => {
+          if(!message) {
+            Alert.alert("Attention", "Veuillez renseigner un message fort");
+            return
+          }
           await update(route.params.uuid, {
             answer: message || "",
             stepID: "strongMessage",

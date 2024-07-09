@@ -1,7 +1,7 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { useSpeech } from "./hooks/useSpeech";
 import { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -27,7 +27,7 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={3} totalSteps={6} />
+      <ProgressBar currentStep={3} totalSteps={8} />
       <QuestionTemplate
         title="💼 Ce que je fais dans la vie"
         example={`Mes loisirs : sports, musique...\nMon travail : cuisinier, caissier...`}
@@ -37,6 +37,10 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
           value: occupations,
         }}
         onNext={async () => {
+          if (!occupations) {
+            Alert.alert("Attention", "Veuillez renseigner vos occupations");
+            return;
+          }
           await update(route.params.uuid, {
             answer: occupations || "",
             stepID: "occupations",

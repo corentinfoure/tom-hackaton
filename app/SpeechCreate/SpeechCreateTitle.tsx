@@ -1,6 +1,6 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
@@ -28,7 +28,7 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
         paddingBottom: bottom,
       }}
     >
-      <ProgressBar currentStep={1} totalSteps={6} />
+      <ProgressBar currentStep={1} totalSteps={8} />
       <QuestionTemplate
         title="✍️ Je donne un titre"
         input1={{
@@ -38,6 +38,10 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
         }}
         onNext={async () => {
           // await clear();
+          if(!title) {
+            Alert.alert("Attention", "Veuillez renseigner un titre");
+            return
+          }
           const updateWithUUID = async (uuid: string) => {
             await update(uuid, {
               answer: title || "",
