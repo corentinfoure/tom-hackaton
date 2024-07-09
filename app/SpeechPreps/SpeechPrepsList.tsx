@@ -32,7 +32,7 @@ export const SpeechPrepsList: React.FC<SpeechPrepsRouteParams<"list">> = ({
       contentContainerStyle={{
         paddingTop: 10,
         paddingBottom: bottom,
-        paddingHorizontal: 32,
+        paddingHorizontal: 24,
       }}
     >
       {speeches.map((speech) => (

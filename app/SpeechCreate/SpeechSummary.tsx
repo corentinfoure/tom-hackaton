@@ -47,7 +47,7 @@ export const SpeechSummary: React.FC<SpeechSummaryProps> = ({
           backgroundColor: "white",
         }}
         contentContainerStyle={{
-          paddingHorizontal: 32,
+          paddingHorizontal: 24,
           paddingTop: top,
           paddingBottom: bottom,
         }}
@@ -117,7 +117,7 @@ const Card: React.FC<{
     <View
       style={[
         {
-          backgroundColor: "#F8EDFD",
+          backgroundColor: "#EFF7E1",
           padding: 16,
           borderRadius: 12,
           width: "100%",
