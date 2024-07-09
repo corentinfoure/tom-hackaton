@@ -10,14 +10,14 @@ export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   fillWidth = Math.min(Math.max(fillWidth, 0), 100)
 
   return (
-    <View style={[styles.container, { backgroundColor: 'grey' }]}>
+    <View style={[styles.container, { backgroundColor: '#E8E9F1' }]}>
       <View
         accessibilityValue={{
           min: 0,
           max: 100,
           now: fillWidth,
         }}
-        style={[styles.fill, { width: `${fillWidth}%`, backgroundColor: 'blue' }]}
+        style={[styles.fill, { width: `${fillWidth}%`, backgroundColor: '#006FFD' }]}
       />
     </View>
   )
@@ -25,13 +25,12 @@ export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 15,
-    width: '90%',
-    borderWidth: 1,
-    marginLeft: 15,
+    height: 10,
+    width: '95%',
+    marginLeft: 10,
     borderRadius: 10,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   fill: {
     height: '100%',

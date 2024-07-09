@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#EAF2FF",
     borderRadius: 12,
+    marginTop: 20,
   },
   textContainer: {
     marginLeft: 16,
