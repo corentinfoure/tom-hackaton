@@ -1,9 +1,10 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { useSpeech } from "./hooks/useSpeech";
 import { useState } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateProfession">;
 
@@ -13,8 +14,19 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
 }) => {
   const { update } = useSpeech();
   const [occupations, setOccupations] = useState<string | undefined>(undefined);
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+      contentContainerStyle={{
+        paddingHorizontal: 16,
+        paddingTop: top,
+        paddingBottom: bottom,
+      }}
+    >
       <ProgressBar currentStep={3} totalSteps={6} />
       <QuestionTemplate
         title="Ce que je fais dans la vie"
@@ -36,6 +48,6 @@ export const SpeechCreateProfession: React.FC<SpeechCreateProps> = ({
         }}
         onBack={navigation.goBack}
       />
-    </View>
+    </ScrollView>
   );
 };

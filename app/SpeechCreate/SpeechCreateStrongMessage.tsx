@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { useSpeech } from "./hooks/useSpeech";
 import { ProgressBar } from "@/components/shared/ProgressBar";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreateStrongMessageProps =
   SpeechCreateRouteParams<"SpeechCreateStrongMessage">;
@@ -13,9 +14,19 @@ export const SpeechCreateStrongMessage: React.FC<
 > = ({ navigation, route }) => {
   const { update } = useSpeech();
   const [message, setMessage] = useState<string | undefined>(undefined);
-
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+      contentContainerStyle={{
+        paddingHorizontal: 16,
+        paddingTop: top,
+        paddingBottom: bottom,
+      }}
+    >
       <ProgressBar currentStep={5} totalSteps={6} />
       <QuestionTemplate
         title="Je termine par un message fort"
@@ -31,9 +42,12 @@ export const SpeechCreateStrongMessage: React.FC<
             stepID: "strongMessage",
           });
           // navigate to summary of speech creation
+          navigation.navigate("SpeechCreateSummary", {
+            uuid: route.params.uuid,
+          });
         }}
         onBack={navigation.goBack}
       />
-    </View>
+    </ScrollView>
   );
 };

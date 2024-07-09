@@ -13,9 +13,10 @@ export type SpeechKey =
   | "occupations"
   | "subject"
   | "publicAudience"
-  | "strongMessage";
+  | "strongMessage"
+  | "ideas";
 
-type Speech = Record<SpeechKey, string>;
+export type Speech = Record<SpeechKey, string>;
 
 const readData = async () => {
   const data = await AsyncStorage.getItem(storageKey);
@@ -42,18 +43,21 @@ export const useSpeech = () => {
     if (data) {
       const speeches: Record<string, Speech> = JSON.parse(data);
       const speechToUpdate = speeches[id];
+      console.log({ speechToUpdate });
+
       if (!speechToUpdate) {
         throw new Error("Speech not found");
       }
 
       const updatedSpeech = {
         ...speechToUpdate,
-        [id]: answer,
+        [answer.stepID]: answer.answer,
       };
+      console.log({ updatedSpeech });
 
       await AsyncStorage.setItem(
         storageKey,
-        JSON.stringify({ ...speeches, ...updatedSpeech })
+        JSON.stringify({ ...speeches, ...{ [id]: updatedSpeech } })
       );
     }
   };

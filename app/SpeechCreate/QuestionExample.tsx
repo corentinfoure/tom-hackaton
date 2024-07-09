@@ -4,14 +4,14 @@ import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type QuestionExampleProps = {
   text: string;
-  titleExample: string;
+  titleExample?: string;
 
   style?: StyleProp<ViewStyle>;
 };
 
 export const QuestionExample: React.FC<QuestionExampleProps> = ({
   text,
-  titleExample="Exemple",
+  titleExample = "Exemple",
   style,
 }) => {
   return (

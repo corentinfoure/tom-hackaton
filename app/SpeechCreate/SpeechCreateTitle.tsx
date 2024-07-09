@@ -1,9 +1,10 @@
+import { ProgressBar } from "@/components/shared/ProgressBar";
 import { useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { useSpeech } from "./hooks/useSpeech";
-import { ProgressBar } from "@/components/shared/ProgressBar";
 
 type SpeechCreateTitleProps = SpeechCreateRouteParams<"SpeechCreateTitle">;
 
@@ -11,12 +12,22 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
   navigation,
   route,
 }) => {
-  const { create, update } = useSpeech();
+  const { create, update, clear, read } = useSpeech();
   const [title, setTitle] = useState<string | undefined>(undefined);
   const [uuid, setUUID] = useState<string | undefined>(undefined);
-
+  const { top, bottom } = useSafeAreaInsets();
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+      contentContainerStyle={{
+        paddingHorizontal: 16,
+        paddingTop: top,
+        paddingBottom: bottom,
+      }}
+    >
       <ProgressBar currentStep={1} totalSteps={6} />
       <QuestionTemplate
         title="De quoi je vais parler ?"
@@ -26,11 +37,14 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
           value: title,
         }}
         onNext={async () => {
+          await clear();
           const updateWithUUID = async (uuid: string) => {
             await update(uuid, {
               answer: title || "",
               stepID: "title",
             });
+            console.log({ data: await read() });
+
             navigation.navigate("SpeechCreateName", {
               uuid: uuid,
               step: route.params.step + 1,
@@ -46,6 +60,6 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
         }}
         onBack={navigation.goBack}
       />
-    </View>
+    </ScrollView>
   );
 };

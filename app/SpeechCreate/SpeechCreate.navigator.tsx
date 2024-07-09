@@ -11,6 +11,8 @@ import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject";
 import { SpeechCreatePublic } from "./SpeechCreatePublic";
 import { SpeechCreateTitle } from "./SpeechCreateTitle";
 import { SpeechCreateStrongMessage } from "./SpeechCreateStrongMessage";
+import { CreateIdea, CreateIdeaProps } from "./CreateIdea";
+import { SpeechSummary } from "./SpeechSummary";
 
 const Routes = {
   SpeechCreateContent: "SpeechCreateContent",
@@ -20,6 +22,8 @@ const Routes = {
   SpeechCreateChooseSubject: "SpeechCreateChooseSubject",
   SpeechCreatePublic: "SpeechCreatePublic",
   SpeechCreateStrongMessage: "SpeechCreateStrongMessage",
+  SpeechCreateIdea: "SpeechCreateIdea",
+  SpeechCreateSummary: "SpeechCreateSummary",
 } as const;
 
 type UUIDUpdatable = {
@@ -34,6 +38,8 @@ type SpeechCreateNavigatorParamsList = {
   [Routes.SpeechCreateChooseSubject]: { step: number } & UUIDUpdatable;
   [Routes.SpeechCreatePublic]: { step: number } & UUIDUpdatable;
   [Routes.SpeechCreateStrongMessage]: { step: number } & UUIDUpdatable;
+  [Routes.SpeechCreateIdea]: CreateIdeaProps;
+  [Routes.SpeechCreateSummary]: UUIDUpdatable;
 };
 
 type Routes = (typeof Routes)[keyof typeof Routes];
@@ -62,6 +68,7 @@ export const SpeechCreateNavigator = () => {
       screenOptions={{
         headerBackTitleVisible: false,
         headerTintColor: "black",
+        headerShown: false,
       }}
     >
       <Stack.Screen
@@ -112,6 +119,20 @@ export const SpeechCreateNavigator = () => {
       <Stack.Screen
         name="SpeechCreateStrongMessage"
         component={SpeechCreateStrongMessage}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateIdea"
+        component={CreateIdea}
+        options={{
+          title: "Créer une prise de parole",
+        }}
+      />
+      <Stack.Screen
+        name="SpeechCreateSummary"
+        component={SpeechSummary}
         options={{
           title: "Créer une prise de parole",
         }}
