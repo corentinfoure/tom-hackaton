@@ -16,7 +16,7 @@ type InputProps = {
   value: string | undefined;
   onChangeText: (value: string) => void;
   placeholder?: string;
-}
+};
 
 type QuestionTemplateProps = {
   title: string;
@@ -39,7 +39,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   input2,
   suggestions,
   example,
-  titleExample="Exemple",
+  titleExample = "Exemple",
   onNext,
   onBack,
   validateTitle,
@@ -53,7 +53,13 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
           {subtitle}
         </ThemedText>
       )}
-      {example && <QuestionExample titleExample={titleExample} text={example ?? ''} style={{ marginTop: 10 }} />}
+      {example && (
+        <QuestionExample
+          titleExample={titleExample}
+          text={example ?? ""}
+          style={{ marginTop: 10 }}
+        />
+      )}
       {suggestions && suggestions.length > 0 && (
         <ContainerHalfWidth
           items={suggestions}
@@ -62,14 +68,14 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
         />
       )}
       {input1 && (
-      <InputText
-        title={input1.title}
-        value={input1.value}
-        onChangeText={input1.onChangeText}
-        placeholder={input1.placeholder}
-        largeInput
-        style={{ marginTop: 10 }}
-      />
+        <InputText
+          title={input1.title}
+          value={input1.value}
+          onChangeText={input1.onChangeText}
+          placeholder={input1.placeholder}
+          largeInput
+          style={{ marginTop: 10 }}
+        />
       )}
 
       {input2 && (
@@ -88,11 +94,13 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
         handleOnPress={onNext}
         variant="primary"
         style={{ marginTop: 24, marginBottom: 12 }}
+        rightIcon="chevron-forward-outline"
       />
       <CustomButton
         title={backTitle ?? "Retour a l'étape précédente"}
         handleOnPress={onBack}
         variant="secondary"
+        leftIcon="chevron-back-outline"
       />
     </View>
   );

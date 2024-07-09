@@ -79,11 +79,13 @@ export const SpeechCreateContent: React.FC<SpeechCreateProps> = ({
         }}
         variant="primary"
         style={{ marginTop: 24, marginBottom: 12 }}
+        rightIcon="chevron-forward-outline"
       />
       <CustomButton
         title={"Retour a l'étape précédente"}
         handleOnPress={navigation.goBack}
         variant="secondary"
+        leftIcon="chevron-back-outline"
       />
     </ScrollView>
   );
