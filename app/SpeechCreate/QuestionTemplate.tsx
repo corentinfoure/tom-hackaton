@@ -16,13 +16,14 @@ type InputProps = {
   value: string | undefined;
   onChangeText: (value: string) => void;
   placeholder?: string;
-};
+}
 
 type QuestionTemplateProps = {
   title: string;
   subtitle?: string;
   example?: string;
-  input1: InputProps;
+  titleExample?: string;
+  input1?: InputProps;
   input2?: InputProps;
   suggestions?: ItemData[];
   onNext: () => void;
@@ -36,6 +37,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   input2,
   suggestions,
   example,
+  titleExample="Exemple",
   onNext,
   onBack,
 }) => {
@@ -47,7 +49,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
           {subtitle}
         </ThemedText>
       )}
-      {example && <QuestionExample text={example} style={{ marginTop: 10 }} />}
+      {example && <QuestionExample titleExample={titleExample} text={example ?? ''} style={{ marginTop: 10 }} />}
       {suggestions && suggestions.length > 0 && (
         <ContainerHalfWidth
           items={suggestions}
@@ -55,7 +57,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
           style={{ marginTop: 10 }}
         />
       )}
-
+      {input1 && (
       <InputText
         title={input1.title}
         value={input1.value}
@@ -64,6 +66,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
         largeInput
         style={{ marginTop: 10 }}
       />
+      )}
 
       {input2 && (
         <InputText

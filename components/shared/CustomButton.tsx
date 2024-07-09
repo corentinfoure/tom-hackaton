@@ -35,7 +35,7 @@ export const CustomButton = ({
       onPress={handleOnPress}
     >
       {leftIcon ? (
-        <Ionicons name={leftIcon} size={24} color="black" />
+        <Ionicons name={leftIcon} size={24} color="white" />
       ) : (
         <View style={styles.emptyIcon} />
       )}
@@ -50,7 +50,7 @@ export const CustomButton = ({
         </ThemedText>
       </View>
       {rightIcon ? (
-        <Ionicons name={rightIcon} size={24} color="black" />
+        <Ionicons name={rightIcon} size={24} color="white" />
       ) : (
         <View style={styles.emptyIcon} />
       )}
