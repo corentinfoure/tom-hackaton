@@ -25,12 +25,16 @@ export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 20,
-    width: '100%',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    height: 15,
+    width: '90%',
+    borderWidth: 1,
+    marginLeft: 15,
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
   fill: {
     height: '100%',
+    borderRadius: 10,
   },
 })

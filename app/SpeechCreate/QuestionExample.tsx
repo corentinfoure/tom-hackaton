@@ -4,12 +4,14 @@ import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type QuestionExampleProps = {
   text: string;
+  titleExample: string;
 
   style?: StyleProp<ViewStyle>;
 };
 
 export const QuestionExample: React.FC<QuestionExampleProps> = ({
   text,
+  titleExample="Exemple",
   style,
 }) => {
   return (
@@ -17,7 +19,7 @@ export const QuestionExample: React.FC<QuestionExampleProps> = ({
       <Ionicons name="information-circle" size={24} color="#006FFD" />
       <View style={styles.textContainer}>
         <ThemedText type="subtitle" style={styles.title}>
-          {"Exemple"}
+          {titleExample}
         </ThemedText>
         <ThemedText type="default">{text}</ThemedText>
       </View>

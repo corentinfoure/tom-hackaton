@@ -7,7 +7,7 @@ import React from "react";
 import { LandingPage } from "./app/landingPage";
 import { Home } from "./app/home";
 import { RouteParams } from "./navigation/RouteParams";
-import { AdvicesNavigator } from "./app/Advices/Advices.navigator";
+import { EmotionsNavigator } from "./app/Emotions/Emotions.navigator";
 import { SpeechPrepsNavigator } from "./app/SpeechPreps/SpeechPreps.navigator";
 import { SpeechCreateNavigator } from "./app/SpeechCreate/SpeechCreate.navigator";
 
@@ -65,7 +65,7 @@ const App = () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name={"advices"} component={AdvicesNavigator} />
+          <Stack.Screen name={"advices"} component={EmotionsNavigator} />
           <Stack.Screen name={"speechPreps"} component={SpeechPrepsNavigator} />
           <Stack.Screen
             name={"speechCreate"}
