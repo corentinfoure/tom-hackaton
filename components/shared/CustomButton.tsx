@@ -13,7 +13,7 @@ import { theme } from "../style/colors";
 type IoniconNames = keyof typeof Ionicons.glyphMap;
 
 type ButtonType = {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "tertiary"
   title: string;
   handleOnPress: () => void;
   leftIcon?: IoniconNames;
@@ -51,7 +51,7 @@ export const CustomButton = ({
         <ThemedText
           type="subtitle"
           style={[
-            variant === "primary" ? styles.textPrimary : styles.textSecondary,
+            variant === "primary" ? styles.textPrimary : variant === 'secondary' ? styles.textSecondary : styles.textTertiary,
           ]}
         >
           {title}
@@ -64,7 +64,8 @@ export const CustomButton = ({
           color={
             variant === "primary"
               ? styles.textPrimary.color
-              : styles.textSecondary.color
+              : variant === "secondary" ? styles.textSecondary.color
+              : styles.textTertiary.color
           }
         />
       ) : (
@@ -92,6 +93,10 @@ const styles = StyleSheet.create({
     backgroundColor: theme.button.secondary.background,
     borderColor: theme.button.secondary.border,
   },
+  tertiary: {
+    backgroundColor: theme.button.tertiary.background,
+    borderColor: theme.button.tertiary.border,
+  },
   emptyIcon: {
     width: 24,
     height: 24,
@@ -101,5 +106,8 @@ const styles = StyleSheet.create({
   },
   textSecondary: {
     color: theme.button.secondary.text,
+  },
+  textTertiary: {
+    color: theme.button.tertiary.text,
   },
 });

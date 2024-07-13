@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "tom-hackaton",
+    "name": "Ogma Tom France",
     "slug": "tom-hackaton",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/app-image.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "tomfrance.ogma"
     },
     "web": {
       "bundler": "metro",
@@ -27,6 +28,11 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [],
-    "experiments": {}
+    "experiments": {},
+    "extra": {
+      "eas": {
+        "projectId": "1457f910-15bd-4041-996f-18790fc2f50c"
+      }
+    }
   }
 }
