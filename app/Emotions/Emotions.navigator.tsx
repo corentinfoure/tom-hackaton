@@ -5,10 +5,10 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import { AdviceScreen } from "./AdviceScreen";
-import { MonthScreen } from "./MonthScreen";
-import { WeekScreen } from "./WeekScreen";
 import { DayBeforeScreen } from "./DayBeforeScreen";
+import { MonthScreen } from "./MonthScreen";
 import { TodayScreen } from "./TodayScreen";
+import { WeekScreen } from "./WeekScreen";
 
 const Routes = {
   Advice: "Advice",

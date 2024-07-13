@@ -4,9 +4,8 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from "@react-navigation/stack";
-import { SpeechPrepsList } from "./SpeechPrepsList";
-import { SpeechSummary } from "../SpeechCreate/SpeechSummary";
 import { SpeechDetails } from "./SpeechDetails";
+import { SpeechPrepsList } from "./SpeechPrepsList";
 
 const Routes = {
   List: "list",

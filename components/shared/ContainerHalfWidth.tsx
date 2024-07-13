@@ -1,11 +1,10 @@
 import {
-  View,
-  StyleSheet,
   Pressable,
   StyleProp,
+  StyleSheet,
+  View,
   ViewStyle,
 } from "react-native";
-import { CustomButton } from "./CustomButton";
 import { ThemedText } from "../style/ThemedText";
 import { theme } from "../style/colors";
 
@@ -66,9 +65,7 @@ export const ContainerHalfWidth: React.FC<{
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // Add styles if needed
-  },
+  container: {},
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",

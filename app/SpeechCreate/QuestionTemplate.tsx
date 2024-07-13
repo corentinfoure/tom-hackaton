@@ -1,15 +1,12 @@
-import { CustomButton } from "@/components/shared/CustomButton";
-import { InputText } from "@/components/shared/InputText";
-import { ThemedText } from "@/components/style/ThemedText";
-import { useState } from "react";
-import { View } from "react-native";
-import { QuestionExample } from "./QuestionExample";
-import { useNavigation } from "@react-navigation/native";
-import { SpeechKey } from "./hooks/useSpeech";
 import {
   ContainerHalfWidth,
   ItemData,
 } from "@/components/shared/ContainerHalfWidth";
+import { CustomButton } from "@/components/shared/CustomButton";
+import { InputText } from "@/components/shared/InputText";
+import { ThemedText } from "@/components/style/ThemedText";
+import { View } from "react-native";
+import { QuestionExample } from "./QuestionExample";
 
 type InputProps = {
   title: string;
@@ -46,7 +43,7 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
   backTitle,
 }) => {
   return (
-    <View >
+    <View>
       <ThemedText type="title">{title}</ThemedText>
       {subtitle && (
         <ThemedText type="default" style={{ marginTop: 10 }}>
@@ -88,7 +85,6 @@ export const QuestionTemplate: React.FC<QuestionTemplateProps> = ({
           largeInput
         />
       )}
-      {/* <InputText value={answer} onChangeText={onChangeAnswer} largeInput /> */}
       <CustomButton
         title={validateTitle ?? "Valider"}
         handleOnPress={onNext}

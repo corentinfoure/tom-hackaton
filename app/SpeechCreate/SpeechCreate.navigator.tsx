@@ -4,14 +4,14 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from "@react-navigation/stack";
+import { CreateIdea, CreateIdeaProps } from "./CreateIdea";
+import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject";
 import { SpeechCreateContent } from "./SpeechCreateContent";
 import { SpeechCreateName } from "./SpeechCreateName";
 import { SpeechCreateProfession } from "./SpeechCreateProfession";
-import { SpeechCreateChooseSubject } from "./SpeechCreateChooseSubject";
 import { SpeechCreatePublic } from "./SpeechCreatePublic";
-import { SpeechCreateTitle } from "./SpeechCreateTitle";
 import { SpeechCreateStrongMessage } from "./SpeechCreateStrongMessage";
-import { CreateIdea, CreateIdeaProps } from "./CreateIdea";
+import { SpeechCreateTitle } from "./SpeechCreateTitle";
 import { SpeechSummary } from "./SpeechSummary";
 
 const Routes = {

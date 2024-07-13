@@ -1,6 +1,6 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
@@ -12,7 +12,7 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
   navigation,
   route,
 }) => {
-  const { create, update, clear, read } = useSpeech();
+  const { create, update } = useSpeech();
   const [title, setTitle] = useState<string | undefined>(undefined);
   const [uuid, setUUID] = useState<string | undefined>(undefined);
   const { top, bottom } = useSafeAreaInsets();
@@ -37,10 +37,9 @@ export const SpeechCreateTitle: React.FC<SpeechCreateTitleProps> = ({
           value: title,
         }}
         onNext={async () => {
-          // await clear();
-          if(!title) {
+          if (!title) {
             Alert.alert("Attention", "Veuillez renseigner un titre");
-            return
+            return;
           }
           const updateWithUUID = async (uuid: string) => {
             await update(uuid, {

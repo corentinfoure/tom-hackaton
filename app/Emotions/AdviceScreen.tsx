@@ -1,14 +1,13 @@
-import React from "react";
-import { EmotionsRouteParams } from "./Emotions.navigator";
 import { ProgressBar } from "@/components/shared/ProgressBar";
-import { QuestionTemplate } from "../SpeechCreate/QuestionTemplate";
-import { View, ScrollView } from "react-native";
+import React from "react";
+import { ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { QuestionTemplate } from "../SpeechCreate/QuestionTemplate";
+import { EmotionsRouteParams } from "./Emotions.navigator";
 
-type EmotionsProps = EmotionsRouteParams<'Advice'>;
+type EmotionsProps = EmotionsRouteParams<"Advice">;
 
-export const AdviceScreen: React.FC<EmotionsProps> = ({ navigation, route }) => {
-
+export const AdviceScreen: React.FC<EmotionsProps> = ({ navigation }) => {
   const { top, bottom } = useSafeAreaInsets();
 
   return (
@@ -36,8 +35,8 @@ export const AdviceScreen: React.FC<EmotionsProps> = ({ navigation, route }) => 
         Je dois aussi savoir combien de personnes vont participer à
         mon intervention."
         titleExample="Conseil"
-        onNext={() => navigation.navigate('Month')}
+        onNext={() => navigation.navigate("Month")}
       />
     </ScrollView>
-  )
+  );
 };

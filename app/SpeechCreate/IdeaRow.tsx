@@ -1,3 +1,5 @@
+import { ThemedText } from "@/components/style/ThemedText";
+import { Ionicons } from "@expo/vector-icons";
 import {
   Pressable,
   StyleProp,
@@ -6,8 +8,6 @@ import {
   ViewStyle,
 } from "react-native";
 import { Idea } from "./CreateIdea";
-import { ThemedText } from "@/components/style/ThemedText";
-import { Ionicons } from "@expo/vector-icons";
 
 type IdeaRowProps = {
   onPressDelete: () => void;

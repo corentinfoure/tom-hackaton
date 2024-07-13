@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { Alert, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { Alert, ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type Idea = {
   idea: string;
@@ -40,15 +40,16 @@ export const CreateIdea: React.FC<CreateIdeaScreenProps> = ({ route }) => {
           value: ideaContent,
         }}
         onBack={onBack}
-        onNext={() =>
-          {
-            if (!ideaContent || !exampleContent) {
-              Alert.alert("Attention", "Veuillez renseigner une idée et un exemple");
-              return;
-            }
-            onValidate({ idea: ideaContent, example: exampleContent })
+        onNext={() => {
+          if (!ideaContent || !exampleContent) {
+            Alert.alert(
+              "Attention",
+              "Veuillez renseigner une idée et un exemple"
+            );
+            return;
           }
-        }
+          onValidate({ idea: ideaContent, example: exampleContent });
+        }}
         title="Ajouter une idée"
         subtitle="Pour chaque idée, je dois donner un exemple"
         input2={{

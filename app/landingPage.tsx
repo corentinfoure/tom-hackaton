@@ -1,15 +1,10 @@
-import { ThemedText } from "@/components/style/ThemedText";
-import { Pressable, View, StyleSheet } from "react-native";
-import { ProgressBar } from "@/components/shared/ProgressBar";
-import {
-  ContainerHalfWidth,
-  ItemData,
-} from "@/components/shared/ContainerHalfWidth";
 import { RootRouteParams } from "@/App";
 import { CustomButton } from "@/components/shared/CustomButton";
+import { ProgressBar } from "@/components/shared/ProgressBar";
+import { ThemedText } from "@/components/style/ThemedText";
+import { Pressable, StyleSheet, View } from "react-native";
 
 type LandingPageProps = RootRouteParams<"landingPage">;
-
 
 export const LandingPage: React.FC<LandingPageProps> = ({
   navigation,
@@ -35,16 +30,3 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 10,
-  },
-});
