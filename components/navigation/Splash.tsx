@@ -1,8 +1,7 @@
 import { RootRouteParams } from "@/App";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback } from "react";
-import { Image, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Image } from "react-native";
 
 type SplashProps = RootRouteParams<"splash">;
 

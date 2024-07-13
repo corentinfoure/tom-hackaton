@@ -1,10 +1,10 @@
+import { ProgressBar } from "@/components/shared/ProgressBar";
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
 import { useSpeech } from "./hooks/useSpeech";
-import { ProgressBar } from "@/components/shared/ProgressBar";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreateStrongMessageProps =
   SpeechCreateRouteParams<"SpeechCreateStrongMessage">;
@@ -37,15 +37,14 @@ export const SpeechCreateStrongMessage: React.FC<
           value: message,
         }}
         onNext={async () => {
-          if(!message) {
+          if (!message) {
             Alert.alert("Attention", "Veuillez renseigner un message fort");
-            return
+            return;
           }
           await update(route.params.uuid, {
             answer: message || "",
             stepID: "strongMessage",
           });
-          // navigate to summary of speech creation
           navigation.navigate("SpeechCreateSummary", {
             uuid: route.params.uuid,
           });

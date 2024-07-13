@@ -4,7 +4,7 @@ export const theme = {
     background1: "#EAF2FF",
     border1: "#006FFD",
     background2: "#F8EDFD",
-    border2: '#892FFF',
+    border2: "#892FFF",
     background3: "#EFF7E1",
     border3: "#699B11",
   },
@@ -31,7 +31,7 @@ export const theme = {
       background: "#e50000",
       border: "white",
       text: "white",
-    }
+    },
   },
   inputField: {
     primary: {

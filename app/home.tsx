@@ -2,21 +2,19 @@ import { RootRouteParams } from "@/App";
 import type { ItemData } from "@/components/shared/ContainerFullWidth";
 import { ContainerFullWidth } from "@/components/shared/ContainerFullWidth";
 import { ThemedText } from "@/components/style/ThemedText";
-import { useEffect } from "react";
-import { Pressable, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { theme } from "@/components/style/colors";
+import { useEffect } from "react";
+import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useSpeech } from "./SpeechCreate/hooks/useSpeech";
 
 type HomeProps = RootRouteParams<"home">;
 
 export const Home: React.FC<HomeProps> = ({ navigation }) => {
-  const { clear } = useSpeech();
   const items: ItemData[] = [
     {
       image: require("@/assets/images/edit_square.png"),
       onPress: () => {
-        // clear();
         navigation.navigate("speechCreate");
       },
       backgroundColor: theme.homePage.background1,
@@ -38,16 +36,6 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
       title: "Mes prises de paroles",
     },
   ];
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Pressable onPress={() => {}} style={{ marginRight: 16 }}>
-          <ThemedText>{"T"}</ThemedText>
-        </Pressable>
-      ),
-    });
-  }, [navigation]);
 
   const { top, bottom } = useSafeAreaInsets();
 

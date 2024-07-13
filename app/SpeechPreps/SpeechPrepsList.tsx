@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { Speech, useSpeech } from "../SpeechCreate/hooks/useSpeech";
-import { SpeechPrepsRouteParams } from "./SpeechPreps.navigator";
-import { Pressable, ScrollView } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedText } from "@/components/style/ThemedText";
 import { theme } from "@/components/style/colors";
+import { useEffect, useState } from "react";
+import { Pressable, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Speech, useSpeech } from "../SpeechCreate/hooks/useSpeech";
+import { SpeechPrepsRouteParams } from "./SpeechPreps.navigator";
 
 export const SpeechPrepsList: React.FC<SpeechPrepsRouteParams<"list">> = ({
   navigation,
@@ -24,7 +24,6 @@ export const SpeechPrepsList: React.FC<SpeechPrepsRouteParams<"list">> = ({
       );
     };
     fetch();
-
   }, []);
   return (
     <ScrollView

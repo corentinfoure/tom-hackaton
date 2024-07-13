@@ -4,13 +4,13 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import React from "react";
-import { LandingPage } from "./app/landingPage";
-import { Home } from "./app/home";
-import { RouteParams } from "./navigation/RouteParams";
 import { EmotionsNavigator } from "./app/Emotions/Emotions.navigator";
-import { SpeechPrepsNavigator } from "./app/SpeechPreps/SpeechPreps.navigator";
 import { SpeechCreateNavigator } from "./app/SpeechCreate/SpeechCreate.navigator";
+import { SpeechPrepsNavigator } from "./app/SpeechPreps/SpeechPreps.navigator";
+import { Home } from "./app/home";
+import { LandingPage } from "./app/landingPage";
 import { Splash } from "./components/navigation/Splash";
+import { RouteParams } from "./navigation/RouteParams";
 
 const Routes = {
   Landing: "landingPage",

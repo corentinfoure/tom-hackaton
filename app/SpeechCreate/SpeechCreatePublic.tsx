@@ -1,14 +1,11 @@
+import { ItemData } from "@/components/shared/ContainerHalfWidth";
 import { ProgressBar } from "@/components/shared/ProgressBar";
+import { useState } from "react";
+import { Alert, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { Alert, ScrollView, View } from "react-native";
-import {
-  ContainerHalfWidth,
-  ItemData,
-} from "@/components/shared/ContainerHalfWidth";
-import { useState } from "react";
 import { useSpeech } from "./hooks/useSpeech";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreatePublic = SpeechCreateRouteParams<"SpeechCreatePublic">;
 

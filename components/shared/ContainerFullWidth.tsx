@@ -1,10 +1,10 @@
 import {
-  View,
   Image,
-  StyleSheet,
   ImageSourcePropType,
   Pressable,
   PressableProps,
+  StyleSheet,
+  View,
 } from "react-native";
 import { ThemedText } from "../style/ThemedText";
 
@@ -25,15 +25,22 @@ export const ContainerFullWidth: React.FC<{ items: ItemData[] }> = ({
         return (
           <Pressable
             {...rest}
-            style={[styles.itemContainer, { marginTop: index > 0 ? 10 : 0, backgroundColor: backgroundColor, borderColor: borderColor}]}
+            style={[
+              styles.itemContainer,
+              {
+                marginTop: index > 0 ? 10 : 0,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+              },
+            ]}
             key={index}
           >
             <Image source={item.image} style={styles.image} />
-            {title &&
-            <ThemedText type="subtitle" style={styles.title}>
-              {item.title}
-            </ThemedText>
-      }
+            {title && (
+              <ThemedText type="subtitle" style={styles.title}>
+                {item.title}
+              </ThemedText>
+            )}
           </Pressable>
         );
       })}

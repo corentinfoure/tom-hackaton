@@ -1,10 +1,10 @@
 import { ProgressBar } from "@/components/shared/ProgressBar";
+import { useState } from "react";
+import { Alert, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { QuestionTemplate } from "./QuestionTemplate";
 import { SpeechCreateRouteParams } from "./SpeechCreate.navigator";
-import { Alert, ScrollView, View } from "react-native";
-import { useState } from "react";
 import { useSpeech } from "./hooks/useSpeech";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SpeechCreateProps = SpeechCreateRouteParams<"SpeechCreateName">;
 
@@ -45,13 +45,13 @@ export const SpeechCreateName: React.FC<SpeechCreateProps> = ({
           value: age,
         }}
         onNext={async () => {
-          if(!name) {
+          if (!name) {
             Alert.alert("Attention", "Veuillez renseigner votre nom");
-            return
+            return;
           }
-          if(!age) {
+          if (!age) {
             Alert.alert("Attention", "Veuillez renseigner votre age");
-            return
+            return;
           }
           await update(route.params.uuid, {
             answer: name || "",

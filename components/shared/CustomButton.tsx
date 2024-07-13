@@ -1,19 +1,19 @@
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
 import {
-  View,
   Pressable,
-  StyleSheet,
   StyleProp,
+  StyleSheet,
+  View,
   ViewStyle,
 } from "react-native";
 import { ThemedText } from "../style/ThemedText";
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
 import { theme } from "../style/colors";
 
 type IoniconNames = keyof typeof Ionicons.glyphMap;
 
 type ButtonType = {
-  variant: "primary" | "secondary" | "tertiary"
+  variant: "primary" | "secondary" | "tertiary";
   title: string;
   handleOnPress: () => void;
   leftIcon?: IoniconNames;
@@ -51,7 +51,11 @@ export const CustomButton = ({
         <ThemedText
           type="subtitle"
           style={[
-            variant === "primary" ? styles.textPrimary : variant === 'secondary' ? styles.textSecondary : styles.textTertiary,
+            variant === "primary"
+              ? styles.textPrimary
+              : variant === "secondary"
+              ? styles.textSecondary
+              : styles.textTertiary,
           ]}
         >
           {title}
@@ -64,7 +68,8 @@ export const CustomButton = ({
           color={
             variant === "primary"
               ? styles.textPrimary.color
-              : variant === "secondary" ? styles.textSecondary.color
+              : variant === "secondary"
+              ? styles.textSecondary.color
               : styles.textTertiary.color
           }
         />

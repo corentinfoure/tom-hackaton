@@ -1,8 +1,8 @@
 import {
-  TextInput,
-  StyleSheet,
-  View,
   StyleProp,
+  StyleSheet,
+  TextInput,
+  View,
   ViewStyle,
 } from "react-native";
 import { ThemedText } from "../style/ThemedText";
