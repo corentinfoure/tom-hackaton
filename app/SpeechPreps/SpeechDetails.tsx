@@ -4,7 +4,7 @@ import { SpeechPrepsRouteParams } from "./SpeechPreps.navigator";
 import { CustomButton } from "@/components/shared/CustomButton";
 import { Speech, useSpeech } from "../SpeechCreate/hooks/useSpeech";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
+import { Alert, ScrollView, StyleProp, View, ViewStyle } from "react-native";
 import { ThemedText } from "@/components/style/ThemedText";
 import { QuestionExample } from "../SpeechCreate/QuestionExample";
 import { Idea } from "../SpeechCreate/CreateIdea";
@@ -17,7 +17,7 @@ export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
 }) => {
   const { uuid } = route.params;
 
-  const { read } = useSpeech();
+  const { read, deleteSpeech } = useSpeech();
 
   const [data, setData] = useState<Speech | undefined>(undefined);
 
@@ -94,6 +94,29 @@ export const SpeechDetails: React.FC<SpeechDetailsProps> = ({
           variant="primary"
           style={{ marginTop: 16 }}
           rightIcon="checkmark-outline"
+        />
+
+        <CustomButton
+          title={"Supprimer le discours"}
+          handleOnPress={ async () => {
+            Alert.alert("Supprimer le discours", "Êtes-vous sûr de vouloir supprimer ce discours ?", [
+              {
+                text: "Annuler",
+                style: "cancel",
+              },
+              {
+                text: "Supprimer",
+                style: "destructive",
+                onPress: async () => {
+                  await deleteSpeech(uuid);
+                  navigation.reset({ routes: [{ name: "list" }] });
+                },
+              },
+            ])
+          }}
+          variant="tertiary"
+          style={{ marginTop: 16 }}
+          rightIcon="trash-outline"
         />
       </ScrollView>
     )

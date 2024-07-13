@@ -60,9 +60,20 @@ export const useSpeech = () => {
     }
   };
 
+  const deleteSpeech = async (id: string) => {
+    const data = await AsyncStorage.getItem(storageKey);
+
+    if (data) {
+      const speeches: Record<string, Speech> = JSON.parse(data)
+      delete speeches[id];
+      await AsyncStorage.setItem(storageKey, JSON.stringify(speeches))
+    }
+
+  }
+
   const clear = async () => {
     await AsyncStorage.removeItem(storageKey);
   };
 
-  return { create, update, read: readData, clear };
+  return { create, update, read: readData, deleteSpeech, clear };
 };

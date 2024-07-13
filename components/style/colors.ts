@@ -27,6 +27,11 @@ export const theme = {
       border: "#006FFD",
       text: "#006FFD",
     },
+    tertiary: {
+      background: "#e50000",
+      border: "white",
+      text: "white",
+    }
   },
   inputField: {
     primary: {
